@@ -3,7 +3,15 @@ package com.gavineverett.server;
 import java.util.ArrayList;
 
 public class EchoServer1 {
+    //defining codes
+    public static final String login = "200";
+    public static final String logout = "204";
+    public static final String fileUpload = "300";
+    public static final String fileDownload = "500";
+
     public static void main(String[] args) {
+
+
         int serverPort = 7;    // default port
         if (args.length == 1 )
             serverPort = Integer.parseInt(args[0]);
@@ -23,10 +31,35 @@ public class EchoServer1 {
                         request.getPort( ), message);
 
 
-
                 //when the message is retrieved the client will send back a code followed by the request of login.
-                String code = message.substring(0, 3);
-                System.out.print(code);
+                  String code = message.substring(0, 3);
+
+                //create a switch statement to decipher between the codes chosen.
+                switch (code)
+                {
+                    case login:
+                        //logincode
+                        break;
+
+
+                    case logout:
+                        //logoutcode
+                        break;
+
+
+                    case fileUpload:
+                        //fileuploadcode
+                        break;
+
+
+
+                    case fileDownload:
+                        //filedownload
+                        break;
+
+
+                }
+
 
 
 
