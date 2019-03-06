@@ -1,5 +1,7 @@
 package com.gavineverett.server;
 
+import java.util.ArrayList;
+
 public class EchoServer1 {
     public static void main(String[] args) {
         int serverPort = 7;    // default port
@@ -19,6 +21,18 @@ public class EchoServer1 {
                 // Now send the echo to the requestor
                 mySocket.sendMessage(request.getAddress( ),
                         request.getPort( ), message);
+
+
+
+                //when the message is retrieved the client will send back a code followed by the request of login.
+                String code = message.substring(0, 3);
+                System.out.print(code);
+
+
+
+
+
+
             } //end while
         } // end try
         catch (Exception ex) {
