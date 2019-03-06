@@ -10,7 +10,7 @@ public class EchoClientHelper1 {
     private MyClientDatagramSocket mySocket;
     private InetAddress serverHost;
     private int serverPort;
-    String receivedata = "";
+
 
 
     EchoClientHelper1(String hostName, String portNum)
@@ -40,8 +40,9 @@ public class EchoClientHelper1 {
 
         public String login(String username)
            throws SocketException, IOException {
+            String receivedata = "";
             // retrieve the message inputted by the user e.g login.
-            String userCommand = "200" + "The user:" + username + "has been successfully logged in";
+            String userCommand = "200" + "The user:" + username + " has been successfully logged in";
             //Get the socket,
             mySocket.sendMessage(serverHost, serverPort, userCommand);
             // recieve echo back
@@ -50,8 +51,16 @@ public class EchoClientHelper1 {
         }
 
 
-        public void logout()
-        {
+        public String logout(String username)
+           throws SocketException, IOException {
+            String receivelogout = "";
+            // retrieve the message inputted by the user e.g login.
+            String userCommand = "204" + "The user:" + username + "has been successfully logged in";
+            //Get the socket,
+            mySocket.sendMessage(serverHost, serverPort, userCommand);
+            // recieve echo back
+            receivelogout = mySocket.receiveMessage();
+            return receivelogout;
 
         }
 

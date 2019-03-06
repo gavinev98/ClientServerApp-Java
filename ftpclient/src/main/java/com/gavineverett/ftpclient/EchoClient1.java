@@ -5,6 +5,9 @@ import java.io.BufferedReader;
 import java.io.InputStreamReader;
 
 public class EchoClient1 {
+    String username ="";
+    String option = "";
+    boolean userSession;
     static final String endMessage = ".";
     public static void main(String[] args) {
         InputStreamReader is = new InputStreamReader(System.in);
@@ -24,17 +27,16 @@ public class EchoClient1 {
             boolean done = false;
             String message, echo;
             while (!done) {
-                System.out.println("Enter a line to receive an echo back from the server, "
-                        + "or a single peroid to quit.");
-                message = br.readLine( );
-                if ((message.trim()).equals (endMessage)){
-                    done = true;
-                    helper.done( );
-                }
-                else {
-                    echo = helper.getEcho( message);
-                    System.out.println(echo);
-                }
+                System.out.println("Hello and welcome to the system");
+
+                        System.out.print("Please enter a username of your choice: ");
+                        InputStreamReader convert = new InputStreamReader(System.in);
+                        BufferedReader reading = new BufferedReader(convert);
+
+                        String usersValue = reading.readLine();
+
+                        helper.login(usersValue);
+
             } // end while
         } // end try
         catch (Exception ex) {
