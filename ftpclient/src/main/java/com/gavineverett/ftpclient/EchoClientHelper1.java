@@ -10,6 +10,8 @@ public class EchoClientHelper1 {
     private MyClientDatagramSocket mySocket;
     private InetAddress serverHost;
     private int serverPort;
+    String receivedata = "";
+
 
     EchoClientHelper1(String hostName, String portNum)
             throws SocketException, UnknownHostException {
@@ -32,5 +34,38 @@ public class EchoClientHelper1 {
     public void done( ) throws SocketException {
         mySocket.close( );
     }  //end done
+
+
+    //create methods to recieve response from the server.
+
+        public String login(String username)
+           throws SocketException, IOException {
+            // retrieve the message inputted by the user e.g login.
+            String userCommand = "200" + "The user:" + username + "has been successfully logged in";
+            //Get the socket,
+            mySocket.sendMessage(serverHost, serverPort, userCommand);
+            // recieve echo back
+            receivedata = mySocket.receiveMessage();
+            return receivedata;
+        }
+
+
+        public void logout()
+        {
+
+        }
+
+        public void filupload()
+        {
+
+        }
+
+        public void filedownload()
+        {
+
+        }
+
+
+
 
 } //end class
