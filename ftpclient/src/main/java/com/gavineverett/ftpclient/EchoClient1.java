@@ -7,8 +7,9 @@ import java.io.InputStreamReader;
 public class EchoClient1 {
     String username ="";
     String option = "";
-    boolean userSession;
-    static final String endMessage = ".";
+    static boolean userSession;
+    static  String closeapp = "";
+    static String fileupload = "F";
     public static void main(String[] args) {
         InputStreamReader is = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(is);
@@ -37,8 +38,46 @@ public class EchoClient1 {
 
                     String status = helper.login(usersValue);
                 done =false;
-                //output returned message from server
-                System.out.print(status);
+
+                System.out.println(status);
+
+                userSession = true;
+
+                while(userSession){
+
+                    //output returned message from server
+                    System.out.print("---------- CLIENT APPLICATION SERVER -------------");
+
+                    System.out.print("\nPlease Choose an option , F(FileUpload), D(FileDownload), L(Logout)");
+
+                    //Read input for command line
+                    InputStreamReader converter = new InputStreamReader(System.in);
+                    BufferedReader in = new BufferedReader(converter);
+                    closeapp = in.readLine();
+
+                    switch (closeapp)
+                    {
+                        case "F":
+                            //fileupload
+                            break;
+
+
+                        case "D":
+                            //download
+                             break;
+
+
+                        case "L":
+                            userSession = false;
+                            break;
+
+                    }
+
+                }
+
+                //close connection
+
+
 
             } // end while
 

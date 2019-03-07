@@ -45,7 +45,6 @@ public class EchoServer1 {
                         //logincode
                         String recieveMessage = request.getMessage();
                         String extractUserName = recieveMessage.substring(14, 19);
-                        System.out.println("The username is: " + extractUserName);
                         //check for users validity.
                         String authCheck = performLoginOperation(extractUserName);
                         //send back relevant information back to the client.
@@ -53,16 +52,13 @@ public class EchoServer1 {
                                 request.getPort(), authCheck);
                         break;
 
-
                     case logout:
                         //logoutcode
                         break;
 
-
                     case fileUpload:
                         //fileuploadcode
                         break;
-
 
                     case fileDownload:
                         //filedownload
@@ -85,18 +81,18 @@ public class EchoServer1 {
         try {
             //check for txt file
             final String usertxt = username;
-            final String filename = username + ".txt";
+            final String filename = usertxt + ".txt";
             final File file = new File("C:\\ServerSession", filename);
             //boolean variable if user exists
             boolean userExists = file.exists();
             // check if user exists by checking file directory.
             if (userExists) {
-                String auth = "Welcome back to the system" + username;
+                String auth = "Welcome back to the system: " + username;
                 return auth;
             } else {
                 //If user does not exist create a new file for the user and add to directory.
                 file.createNewFile();
-                String registered = "You have been successfully registered " + username + " enjoy!";
+                String registered = "You have been successfully registered: " + username + " enjoy!";
                 //return string registered if user has successfully been registered.
                 return registered;
             }
