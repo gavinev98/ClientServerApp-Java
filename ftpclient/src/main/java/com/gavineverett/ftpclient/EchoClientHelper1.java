@@ -42,7 +42,7 @@ public class EchoClientHelper1 {
            throws SocketException, IOException {
             String receivedata = "";
             // retrieve the message inputted by the user e.g login.
-            String userCommand = "200" + "The user:" + username + " has requested to be logged in";
+            String userCommand = "200 " + "The user: " + username + " has requested to be logged in";
             //Get the socket,
             mySocket.sendMessage(serverHost, serverPort, userCommand);
             // recieve echo back

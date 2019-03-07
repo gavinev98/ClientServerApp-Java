@@ -47,11 +47,9 @@ public class EchoServer1 {
                 {
                     case login:
                         //logincode
-                        DatagramMessage loginrequest =
-                                mySocket.receiveMessageAndSender();
-                        String recieveMessage = loginrequest.getMessage();
-                        String extractUserName = recieveMessage.substring(11, 18);
-                        System.out.println("The username is " + extractUserName);
+                        String recieveMessage = request.getMessage();
+                        String extractUserName = recieveMessage.substring(14, 19);
+                        System.out.println("The username is: " + extractUserName);
                         break;
 
 
@@ -82,5 +80,10 @@ public class EchoServer1 {
 
 
     //methods to perform actions.
+
+    public String performLoginOperation(String username)
+    {
+        return null;
+    }
 
 } // end class
