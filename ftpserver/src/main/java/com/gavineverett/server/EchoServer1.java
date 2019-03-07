@@ -1,6 +1,6 @@
 package com.gavineverett.server;
 
-import java.util.ArrayList;
+import java.io.File;
 
 public class EchoServer1 {
     //defining codes
@@ -10,6 +10,14 @@ public class EchoServer1 {
     public static final String fileDownload = "500";
 
     public static void main(String[] args) {
+
+        //creating a directory to store users
+        File userDirectory = new File("C:\\ServerSession");
+        //check if directory does not exist.
+        if(!userDirectory.exists())
+        {
+            userDirectory.mkdir();
+        }
 
 
         int serverPort = 7;    // default port
@@ -41,15 +49,9 @@ public class EchoServer1 {
                         //logincode
                         DatagramMessage loginrequest =
                                 mySocket.receiveMessageAndSender();
-
                         String recieveMessage = loginrequest.getMessage();
                         String extractUserName = recieveMessage.substring(11, 18);
-                        System.out.println(extractUserName);
-
-
-
-
-
+                        System.out.println("The username is " + extractUserName);
                         break;
 
 
