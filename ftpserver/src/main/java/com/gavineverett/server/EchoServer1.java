@@ -35,10 +35,6 @@ public class EchoServer1 {
                 System.out.println("Request received");
                 String message = request.getMessage();
                 System.out.println("message received: " + message);
-                // Now send the echo to the requestor
-                mySocket.sendMessage(request.getAddress(),
-                        request.getPort(), message);
-
 
                 //when the message is retrieved the client will send back a code followed by the request of login.
                 String code = message.substring(0, 3);
@@ -51,10 +47,10 @@ public class EchoServer1 {
                         String extractUserName = recieveMessage.substring(14, 19);
                         System.out.println("The username is: " + extractUserName);
                         //check for users validity.
-                        performLoginOperation(extractUserName);
+                        String authCheck = performLoginOperation(extractUserName);
                         //send back relevant information back to the client.
                         mySocket.sendMessage(request.getAddress(),
-                                request.getPort(), extractUserName);
+                                request.getPort(), authCheck);
                         break;
 
 

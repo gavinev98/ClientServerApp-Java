@@ -27,7 +27,7 @@ public class EchoClient1 {
             boolean done = false;
             String message, echo;
             while (!done) {
-                System.out.println("Hello and welcome to the system");
+                System.out.println("\nHello and welcome to the system");
 
                         System.out.print("Please enter a username of your choice: ");
                         InputStreamReader convert = new InputStreamReader(System.in);
@@ -35,10 +35,13 @@ public class EchoClient1 {
 
                         String usersValue = reading.readLine();
 
-                        helper.login(usersValue);
-
+                    String status = helper.login(usersValue);
+                done =false;
+                //output returned message from server
+                System.out.print(status);
 
             } // end while
+
 
 
         } // end try
