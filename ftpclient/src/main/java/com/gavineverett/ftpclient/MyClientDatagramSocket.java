@@ -19,6 +19,7 @@ public class MyClientDatagramSocket extends DatagramSocket {
                             String message)
             throws IOException {
         byte[ ] sendBuffer = message.getBytes( );
+
         DatagramPacket datagram =
                 new DatagramPacket(sendBuffer, sendBuffer.length,
                         receiverHost, receiverPort);
@@ -35,4 +36,7 @@ public class MyClientDatagramSocket extends DatagramSocket {
 
         return message;
     } //end receiveMessage
+
+
+
 } //end class

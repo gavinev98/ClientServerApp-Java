@@ -38,12 +38,12 @@ public class EchoClientHelper1 {
 
     //create methods to recieve response from the server.
 
-        public String login(String username)
+        public String login(String username, String password)
            throws SocketException, IOException {
             String receivedata = "";
             String checkinglog = "\nChecking Credentials.....";
             // retrieve the message inputted by the user e.g login.
-            String userCommand = "200 " + "The user: " + username + " has requested to be logged in" + checkinglog;
+            String userCommand = "200-" + username + "-" + password + "-" + checkinglog;
             //Get the socket,
             mySocket.sendMessage(serverHost, serverPort, userCommand);
             // recieve echo back

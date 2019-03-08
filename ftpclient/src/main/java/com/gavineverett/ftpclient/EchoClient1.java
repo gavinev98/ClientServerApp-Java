@@ -28,18 +28,25 @@ public class EchoClient1 {
             boolean done = false;
             String message, echo;
             while (!done) {
+                InputStreamReader convert = new InputStreamReader(System.in);
+                BufferedReader reading = new BufferedReader(convert);
+
                 System.out.println("\nHello and welcome to the system");
 
-                        System.out.print("Please enter a username of your choice: ");
-                        InputStreamReader convert = new InputStreamReader(System.in);
-                        BufferedReader reading = new BufferedReader(convert);
 
-                        String usersValue = reading.readLine();
+                    System.out.print("Please enter a username of your choice: ");
+                    String userNameVal = reading.readLine();
+                    System.out.println("Please enter your password");
+                    String passwordVal =  reading.readLine();
 
-                    String status = helper.login(usersValue);
+                    String status = helper.login(userNameVal, passwordVal);
+
+                    System.out.println(status);
+
+
                 done =false;
 
-                System.out.println(status);
+
 
                 userSession = true;
 
