@@ -60,7 +60,12 @@ public class EchoServer1 {
                         break;
 
                     case logout:
-                        //logout
+                        String loggedOutUser = username;
+                        //Perform logout
+                        String logoutCheck = performLogoutOperation(loggedOutUser);
+                        //send message back to the client.
+                        mySocket.sendMessage(request.getAddress(),
+                                request.getPort(), logoutCheck);
                         break;
 
                     case fileUpload:
@@ -104,12 +109,12 @@ public class EchoServer1 {
                 String outString = sb.toString();
                     if(outString.equals(password))
                     {
-                        String auth = "Welcome back to the system: " + username;
+                        String auth = "304:" + "Welcome back to the system: " + username;
                         return auth;
                     }
                     else
                     {
-                       String invalidCredentials = "Invalid credentials! User exists!";
+                       String invalidCredentials = "506:" + "Invalid credentials! User exists!";
                        return invalidCredentials;
                     }
 
@@ -123,7 +128,7 @@ public class EchoServer1 {
                 writePass.println(storeUserpass);
                 writePass.close();
                 //output sucessfully registered message.
-                String registered = "You have been successfully registered: " + username + " enjoy!";
+                String registered = "204:" + "You have been successfully registered: " + username + " enjoy!";
                 //return string registered if user has successfully been registered.
                 return registered;
             }
@@ -131,6 +136,14 @@ public class EchoServer1 {
             ie.printStackTrace();
         }
        return null;
+    }
+
+
+    public static String performLogoutOperation(String username)
+    {
+        String logoutMessage = "250:" + "The user:" + username + "has been successfully logged out";
+
+        return logoutMessage;
     }
 }
     // end class

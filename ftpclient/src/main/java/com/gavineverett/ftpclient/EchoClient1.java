@@ -1,8 +1,21 @@
 package com.gavineverett.ftpclient;
 
 
+import javafx.application.Application;
+import javafx.scene.Scene;
+import javafx.scene.layout.StackPane;
+import javafx.scene.layout.VBox;
+import javafx.stage.Stage;
+import javafx.scene.control.Button;
+
+import javax.swing.*;
+import java.awt.*;
 import java.io.BufferedReader;
+import java.io.File;
 import java.io.InputStreamReader;
+
+
+
 
 public class EchoClient1 {
     String username ="";
@@ -11,6 +24,8 @@ public class EchoClient1 {
     static  String closeapp = "";
     static String fileupload = "F";
     public static void main(String[] args) {
+
+
         InputStreamReader is = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(is);
         try {
@@ -43,12 +58,32 @@ public class EchoClient1 {
 
                     System.out.println(status);
 
+                    //extracting username for logout
+                    String [] credentials = status.split(":");
+                    String repsonseCode = credentials[0];
 
-                done =false;
 
 
 
-                userSession = true;
+                //checking the response code recieved from server.
+                switch (repsonseCode)
+                {
+                    case "304":
+                        userSession = true;
+                        done =true;
+                        break;
+
+                    case "506":
+                        userSession = false;
+                        done =false;
+                        break;
+
+                    case "204":
+                        userSession = true;
+                        done =true;
+                        break;
+                }
+
 
                 while(userSession){
 
@@ -75,7 +110,9 @@ public class EchoClient1 {
 
 
                         case "L":
+                            helper.logout(userNameVal);
                             userSession = false;
+                            done = false;
                             break;
 
                     }
@@ -95,4 +132,5 @@ public class EchoClient1 {
             ex.printStackTrace( );
         } // end catch
     } //end main
+
 } // end class
