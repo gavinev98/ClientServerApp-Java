@@ -31,10 +31,6 @@ public class EchoClientHelper1 {
         return echo;
     } //end getEcho
 
-    public void done( ) throws SocketException {
-        mySocket.close( );
-    }  //end done
-
 
     //create methods to recieve response from the server.
 
@@ -52,16 +48,16 @@ public class EchoClientHelper1 {
         }
 
 
-        public String logout(String username)
+        public String logout(String username, String password)
            throws SocketException, IOException {
-            String receivelogout = "";
+            String receivedata = "";
             // retrieve the message inputted by the user e.g login.
-            String userCommand = "204-" + username;
+            String logoutCommand = "204-" + username + "-" + password;
             //Get the socket,
-            mySocket.sendMessage(serverHost, serverPort, userCommand);
+            mySocket.sendMessage(serverHost, serverPort, logoutCommand);
             // recieve echo back
-            receivelogout = mySocket.receiveMessage();
-            return receivelogout;
+            receivedata = mySocket.receiveMessage();
+            return receivedata;
 
         }
 
@@ -74,6 +70,12 @@ public class EchoClientHelper1 {
         {
 
         }
+
+
+    public void done( ) throws SocketException {
+        mySocket.close( );
+    }  //end done
+
 
 
 

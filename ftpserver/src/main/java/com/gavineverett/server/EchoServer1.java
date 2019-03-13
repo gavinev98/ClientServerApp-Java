@@ -28,7 +28,7 @@ public class EchoServer1 {
             // instantiates a datagram socket for both sending
             // and receiving data
             MyServerDatagramSocket mySocket = new MyServerDatagramSocket(serverPort);
-            System.out.println("Echo server ready.");
+            System.out.println("Client-Server Application ready!");
             while (true) {  // forever loop
                 DatagramMessage request =
                         mySocket.receiveMessageAndSender();
@@ -40,7 +40,7 @@ public class EchoServer1 {
                 String code = message;
 
                 //splitting datagram message into components to access data.
-                String [] credentials = code.split("-");
+                String[] credentials = code.split("-");
                 String typeRequest = credentials[0];
                 String username = credentials[1];
                 String password = credentials[2];
@@ -60,7 +60,9 @@ public class EchoServer1 {
                         break;
 
                     case logout:
+                        //logout
                         String loggedOutUser = username;
+                        System.out.println("In Logout method");
                         //Perform logout
                         String logoutCheck = performLogoutOperation(loggedOutUser);
                         //send message back to the client.
@@ -102,28 +104,25 @@ public class EchoServer1 {
                 //If users file is there then we check for password inside of file.
                 Scanner in = new Scanner(new FileReader(file));
                 StringBuilder sb = new StringBuilder();
-                while(in.hasNext()) {
+                while (in.hasNext()) {
                     sb.append(in.next());
                 }
                 in.close();
                 String outString = sb.toString();
-                    if(outString.equals(password))
-                    {
-                        String auth = "304:" + "Welcome back to the system: " + username;
-                        return auth;
-                    }
-                    else
-                    {
-                       String invalidCredentials = "506:" + "Invalid credentials! User exists!";
-                       return invalidCredentials;
-                    }
+                if (outString.equals(password)) {
+                    String auth = "304:" + "Welcome back to the system: " + username;
+                    return auth;
+                } else {
+                    String invalidCredentials = "506:" + "Invalid credentials! User exists!";
+                    return invalidCredentials;
+                }
 
             } else {
                 //If user does not exist create a new file for the user and add to directory.
                 file.createNewFile();
                 String storeUserpass = password;
                 //write the new user password to the file.
-                PrintWriter writePass = new PrintWriter(file,"UTF-8");
+                PrintWriter writePass = new PrintWriter(file, "UTF-8");
                 //write password to file.
                 writePass.println(storeUserpass);
                 writePass.close();
@@ -135,15 +134,22 @@ public class EchoServer1 {
         } catch (IOException ie) {
             ie.printStackTrace();
         }
-       return null;
+        return null;
     }
 
 
-    public static String performLogoutOperation(String username)
-    {
-        String logoutMessage = "250:" + "The user:" + username + "has been successfully logged out";
+    public static String performLogoutOperation(String username) {
+        try {
+            String logoutMessage = "250: " + "The user: " + username + " has been successfully logged out";
 
-        return logoutMessage;
+            return logoutMessage;
+
+        } catch (Exception ie) {
+
+            ie.printStackTrace();
+        }
+        return null;
     }
 }
+
     // end class

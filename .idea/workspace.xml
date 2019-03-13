@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="62476b67-4251-498d-8767-b63eddbacde9" name="Default Changelist" comment="">
+    <list default="true" id="62476b67-4251-498d-8767-b63eddbacde9" name="Default Changelist" comment="Added validation for login.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/EchoClient1.java" beforeDir="false" afterPath="$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/EchoClient1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/EchoClientHelper1.java" beforeDir="false" afterPath="$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/EchoClientHelper1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ftpclient/target/classes/com/gavineverett/ftpclient/EchoClient1.class" beforeDir="false" afterPath="$PROJECT_DIR$/ftpclient/target/classes/com/gavineverett/ftpclient/EchoClient1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ftpclient/target/classes/com/gavineverett/ftpclient/EchoClientHelper1.class" beforeDir="false" afterPath="$PROJECT_DIR$/ftpclient/target/classes/com/gavineverett/ftpclient/EchoClientHelper1.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ftpclient/target/classes/com/gavineverett/ftpclient/MyClientDatagramSocket.class" beforeDir="false" afterPath="$PROJECT_DIR$/ftpclient/target/classes/com/gavineverett/ftpclient/MyClientDatagramSocket.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/EchoServer1.java" beforeDir="false" afterPath="$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/EchoServer1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ftpserver/target/classes/com/gavineverett/server/EchoServer1.class" beforeDir="false" afterPath="$PROJECT_DIR$/ftpserver/target/classes/com/gavineverett/server/EchoServer1.class" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -63,25 +63,28 @@
     <session id="1240428760">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
+          <entry key="project.closed" value="1" />
           <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.2" value="1" />
+          <entry key="project.open.time.22" value="1" />
           <entry key="project.open.time.3" value="1" />
           <entry key="project.open.time.4" value="1" />
           <entry key="project.open.time.5" value="1" />
           <entry key="project.open.time.8" value="1" />
-          <entry key="project.opened" value="5" />
+          <entry key="project.opened" value="7" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="8519" />
-          <entry key="txt" value="499" />
+          <entry key="java" value="9161" />
+          <entry key="txt" value="526" />
           <entry key="xml" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="8519" />
-          <entry key="PLAIN_TEXT" value="499" />
+          <entry key="JAVA" value="9161" />
+          <entry key="PLAIN_TEXT" value="526" />
           <entry key="XML" value="4" />
         </counts>
       </usages-collector>
@@ -107,8 +110,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/EchoServer1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="108" column="49" lean-forward="true" selection-start-line="108" selection-start-column="49" selection-end-line="108" selection-end-column="49" />
+            <state relative-caret-position="129">
+              <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -119,8 +122,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/EchoClient1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="92">
-              <caret line="111" column="33" lean-forward="true" selection-start-line="99" selection-start-column="28" selection-end-line="99" selection-end-column="36" />
+            <state relative-caret-position="262">
+              <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -131,8 +134,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/EchoClientHelper1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-10">
-              <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+            <state relative-caret-position="415">
+              <caret line="56" column="46" selection-start-line="56" selection-start-column="46" selection-end-line="56" selection-end-column="46" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -161,6 +164,11 @@
       </list>
     </option>
   </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>Request</find>
+    </findStrings>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
@@ -185,8 +193,8 @@
         <option value="$PROJECT_DIR$/login.fxml" />
         <option value="$PROJECT_DIR$/app.fxml" />
         <option value="$PROJECT_DIR$/styles.css" />
-        <option value="$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/EchoServer1.java" />
         <option value="$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/EchoClientHelper1.java" />
+        <option value="$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/EchoServer1.java" />
         <option value="$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/EchoClient1.java" />
       </list>
     </option>
@@ -232,8 +240,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -315,11 +322,12 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552215747329" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1552470980086" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -468,13 +476,21 @@
       <option name="project" value="LOCAL" />
       <updated>1552040582458</updated>
     </task>
-    <option name="localTasksCounter" value="12" />
+    <task id="LOCAL-00012" summary="Added validation for login.">
+      <created>1552215764205</created>
+      <option name="number" value="00012" />
+      <option name="presentableId" value="LOCAL-00012" />
+      <option name="project" value="LOCAL" />
+      <updated>1552215764205</updated>
+    </task>
+    <option name="localTasksCounter" value="13" />
     <servers />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15191898" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.15511727" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -483,7 +499,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.4978678" weight="0.52603036" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4978678" visible="true" weight="0.39587852" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3991323" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -518,7 +534,8 @@
     <MESSAGE value="Login nearly working, removed message method." />
     <MESSAGE value="Basic Login working" />
     <MESSAGE value="Implemented user/password login working." />
-    <option name="LAST_COMMIT_MESSAGE" value="Implemented user/password login working." />
+    <MESSAGE value="Added validation for login." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added validation for login." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pom.xml">
@@ -600,8 +617,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/EchoClientHelper1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-10">
-          <caret line="17" column="19" selection-start-line="17" selection-start-column="19" selection-end-line="17" selection-end-column="19" />
+        <state relative-caret-position="415">
+          <caret line="56" column="46" selection-start-line="56" selection-start-column="46" selection-end-line="56" selection-end-column="46" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -610,8 +627,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/EchoClient1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="111" column="33" lean-forward="true" selection-start-line="99" selection-start-column="28" selection-end-line="99" selection-end-column="36" />
+        <state relative-caret-position="262">
+          <caret line="106" lean-forward="true" selection-start-line="106" selection-end-line="106" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -620,8 +637,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/EchoServer1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="92">
-          <caret line="108" column="49" lean-forward="true" selection-start-line="108" selection-start-column="49" selection-end-line="108" selection-end-column="49" />
+        <state relative-caret-position="129">
+          <caret line="118" lean-forward="true" selection-start-line="118" selection-end-line="118" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

@@ -13,8 +13,8 @@ import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
-
-
+import java.util.Arrays;
+import java.util.concurrent.ExecutionException;
 
 
 public class EchoClient1 {
@@ -29,7 +29,7 @@ public class EchoClient1 {
         InputStreamReader is = new InputStreamReader(System.in);
         BufferedReader br = new BufferedReader(is);
         try {
-            System.out.println("Welcome to the Echo client.\n" +
+            System.out.println("Welcome to the client.\n" +
                     "What is the name of the server host?");
             String hostName = br.readLine();
             if (hostName.length() == 0) // if user did not enter a name
@@ -53,6 +53,7 @@ public class EchoClient1 {
                     String userNameVal = reading.readLine();
                     System.out.println("Please enter your password");
                     String passwordVal =  reading.readLine();
+
 
                     String status = helper.login(userNameVal, passwordVal);
 
@@ -90,7 +91,7 @@ public class EchoClient1 {
                     //output returned message from server
                     System.out.print("---------- CLIENT APPLICATION SERVER -------------");
 
-                    System.out.print("\nPlease Choose an option , F(FileUpload), D(FileDownload), L(Logout)");
+                    System.out.print("\nPlease Choose an option , F(FileUpload), D(FileDownload), L(Logout):");
 
                     //Read input for command line
                     InputStreamReader converter = new InputStreamReader(System.in);
@@ -110,14 +111,17 @@ public class EchoClient1 {
 
 
                         case "L":
-                            helper.logout(userNameVal);
+                            String logoutMSG = helper.logout(userNameVal, passwordVal);
+                            System.out.println(logoutMSG);
                             userSession = false;
-                            done = false;
                             break;
 
                     }
 
                 }
+
+                //bring user back to login screen.
+                done = false;
 
                 //close connection
 
