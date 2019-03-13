@@ -102,6 +102,7 @@ public class EchoClient1 {
                     {
                         case "F":
                             //fileupload
+                            helper.fileupload();
                             break;
 
 

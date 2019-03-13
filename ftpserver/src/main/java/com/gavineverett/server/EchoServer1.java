@@ -140,7 +140,7 @@ public class EchoServer1 {
 
     public static String performLogoutOperation(String username) {
         try {
-            String logoutMessage = "250: " + "The user: " + username + " has been successfully logged out";
+            String logoutMessage = "250: " + "The user: " + username + " has been successfully logged out.";
 
             return logoutMessage;
 

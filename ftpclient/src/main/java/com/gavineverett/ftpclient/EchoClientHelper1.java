@@ -5,6 +5,8 @@ import java.io.IOException;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
+import javax.swing.*;
+import java.io.File;
 
 public class EchoClientHelper1 {
     private MyClientDatagramSocket mySocket;
@@ -61,8 +63,14 @@ public class EchoClientHelper1 {
 
         }
 
-        public void filupload()
+        public  void fileupload()
         {
+            // create jfile chooser option
+            JFileChooser uploadFile = new JFileChooser();
+            uploadFile.setCurrentDirectory(new java.io.File("C://Desktop"));
+            //show dialog
+            uploadFile.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
+            uploadFile.showOpenDialog(uploadFile);
 
         }
 
@@ -75,7 +83,6 @@ public class EchoClientHelper1 {
     public void done( ) throws SocketException {
         mySocket.close( );
     }  //end done
-
 
 
 
