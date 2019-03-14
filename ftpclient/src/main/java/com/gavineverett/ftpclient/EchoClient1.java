@@ -13,6 +13,9 @@ import java.awt.*;
 import java.io.BufferedReader;
 import java.io.File;
 import java.io.InputStreamReader;
+import java.io.File;
+
+import javax.swing.JFileChooser;
 import java.util.Arrays;
 import java.util.concurrent.ExecutionException;
 
@@ -103,6 +106,7 @@ public class EchoClient1 {
                         case "F":
                             //fileupload
                             helper.fileupload();
+
                             break;
 
 

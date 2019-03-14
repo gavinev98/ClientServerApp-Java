@@ -63,16 +63,36 @@ public class EchoClientHelper1 {
 
         }
 
-        public  void fileupload()
-        {
-            // create jfile chooser option
-            JFileChooser uploadFile = new JFileChooser();
-            uploadFile.setCurrentDirectory(new java.io.File("C://Desktop"));
-            //show dialog
-            uploadFile.setFileSelectionMode(JFileChooser.DIRECTORIES_ONLY);
-            uploadFile.showOpenDialog(uploadFile);
+        public void fileupload() {
 
+            //creating a directory to store users
+          File userDirectory = new File("C:\\ClientFiles");
+            //check if directory does not exist.
+            if (!userDirectory.exists()) {
+                userDirectory.mkdir();
+                String filetemp = "Upload" + ".txt";
+                File crreate = new File("C:\\ClientFiles", filetemp);
+                try {
+                    crreate.createNewFile();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+            }
+            javax.swing.JFrame frame = new javax.swing.JFrame();
+            frame.setDefaultCloseOperation(javax.swing.JFrame.EXIT_ON_CLOSE);
+            javax.swing.JPanel panel = new javax.swing.JPanel();
+            panel.setPreferredSize(new java.awt.Dimension(150, 150));
+            javax.swing.JFileChooser chooseFile = new javax.swing.JFileChooser();
+            frame.getContentPane().add(java.awt.BorderLayout.CENTER, panel);
+            chooseFile.setPreferredSize(new java.awt.Dimension(400, 400));
+            chooseFile.setCurrentDirectory(userDirectory);
+            frame.setSize(400, 440);
+            frame.setVisible(true);
+            panel.add(chooseFile);
         }
+
+
 
         public void filedownload()
         {
