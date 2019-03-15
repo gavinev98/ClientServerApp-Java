@@ -74,8 +74,14 @@ public class EchoServer1 {
                         //fileupload
                         //Receive the message data from the client.
                         byte[] request1 =  mySocket.recieveFile();
-                        String rec = new String(request1, "UTF-8");
-                        System.out.println("File received" + request1);
+                        System.out.println("Write bytes to file.");
+                        //convert byte array and upload to local directory
+                        String uploadFile =  performUploadOperation(request1);
+
+
+                        //validate and upload the file
+
+                        System.out.println("File received" + rec);
 
 
 
@@ -158,9 +164,9 @@ public class EchoServer1 {
         return null;
     }
 
-    public static File performUploadOperation(File file)
+    public static String performUploadOperation(byte[] file)
     {
-        return null;
+
     }
 }
 
