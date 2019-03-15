@@ -26,6 +26,7 @@ public class EchoClient1 {
     static boolean userSession;
     static  String closeapp = "";
     static String fileupload = "F";
+    static String filename = "";
     public static void main(String[] args) {
 
 
@@ -106,9 +107,11 @@ public class EchoClient1 {
                         case "F":
                             //fileupload
                             //retrieve file from the upload
-                           File file = helper.fileupload();
-                           String filename = file.getName();
-                           //send the file to the server
+                            File file = helper.fileupload();
+                            filename = file.getName();
+                            System.out.println("Testing" + filename);
+                            //send the file to the server
+
                            String msg =  helper.sendToServer(file, filename);
                             //retrieve message back from server.
                             System.out.println(msg);

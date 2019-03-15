@@ -54,7 +54,6 @@ public class MyServerDatagramSocket extends DatagramSocket {
         DatagramPacket datagram =
                 new DatagramPacket(msgdata, MAX_LEN);
         this.receive(datagram);
-
         //return the message data
         return msgdata;
     } //end receiveMessage

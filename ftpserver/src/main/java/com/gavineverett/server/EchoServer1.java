@@ -75,7 +75,7 @@ public class EchoServer1 {
                         //Receive the message data from the client.
                         byte[] request1 =  mySocket.recieveFile();
                         String rec = new String(request1, "UTF-8");
-                        System.out.println("File recieved" + rec);
+                        System.out.println("File received" + request1);
 
 
 
@@ -155,6 +155,11 @@ public class EchoServer1 {
 
             ie.printStackTrace();
         }
+        return null;
+    }
+
+    public static File performUploadOperation(File file)
+    {
         return null;
     }
 }

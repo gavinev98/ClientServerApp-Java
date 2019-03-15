@@ -17,6 +17,7 @@ public class EchoClientHelper1 {
 
     private File file;
     private static boolean selectFile = true;
+    private static boolean notComplete = false;
 
     private final static int MAX_PACKET_SIZE = 64;
 
@@ -103,12 +104,21 @@ public class EchoClientHelper1 {
 
             }
 
-            /* https://stackoverflow.com/questions/8402889/working-with-jfilechooser-getting-access-to-the-selected-file */
-            final JFrame frame = new JFrame("Client-Server");
-            JButton btnFile = new JButton("Upload a File");
-            btnFile.addActionListener(new ActionListener() {
-                //Handle open button action.
-                public void actionPerformed(ActionEvent e) {
+
+                /* https://stackoverflow.com/questions/8402889/working-with-jfilechooser-getting-access-to-the-selected-file */
+                final JFrame frame = new JFrame("Client-Server");
+                JButton btnFile = new JButton("Upload a File");
+            while (!notComplete) {
+                frame.getContentPane().add(btnFile);
+                frame.setSize(500, 500);
+                frame.setLocationRelativeTo(null);
+                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+                frame.setVisible(true);
+
+
+                btnFile.addActionListener(new ActionListener() {
+                    //Handle open button action.
+                    public void actionPerformed(ActionEvent e) {
                         final JFileChooser fc = new JFileChooser();
                         //set directory to the current directory.
                         fc.setCurrentDirectory(userDirectory);
@@ -123,38 +133,21 @@ public class EchoClientHelper1 {
                             } else {
                                 //This is where a real application would open the file.
                                 System.out.println("File: " + file.getName() + ".");
+                                notComplete = true;
+
                             }
-                            if(file.length() > 0) {
-                                selectFile = false;
-                                //Get the socket,
-                                try {
-                                    mySocket.sendFile(serverHost, serverPort, file);
-                                } catch (IOException e1) {
-                                    e1.printStackTrace();
-                                }
-                            }
+
                         }
 
                     }
-            });
 
-            frame.getContentPane().add(btnFile);
-            frame.setSize(500, 500);
-            frame.setLocationRelativeTo(null);
-            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-            frame.setVisible(true);
+                });
 
 
 
-            // recieve echo back
-          //  receivedata = mySocket.receiveMessage();
-           // return receivedata;
-
-
+            }
             return file;
         }
-
-
 
 
     public void filedownload()
