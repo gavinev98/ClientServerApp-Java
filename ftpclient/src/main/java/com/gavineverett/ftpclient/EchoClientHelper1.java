@@ -105,8 +105,10 @@ public class EchoClientHelper1 {
                         {
                             System.out.println("The file selected exceeds 64kbs! Please select another file.");
                         }
-                        //This is where a real application would open the file.
-                        System.out.println("File: " + file.getName() + ".");
+                        else {
+                            //This is where a real application would open the file.
+                            System.out.println("File: " + file.getName() + ".");
+                        }
                     } else {
                         System.out.println("Open command cancelled by user.");
                     }

@@ -1,5 +1,7 @@
 package com.gavineverett.ftpclient;
 
+import java.io.File;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.net.DatagramPacket;
 import java.net.DatagramSocket;
@@ -36,6 +38,24 @@ public class MyClientDatagramSocket extends DatagramSocket {
 
         return message;
     } //end receiveMessage
+
+
+    public void sendFile(InetAddress receiverHost,
+                            int receiverPort,
+                            File message)
+            throws IOException {
+        byte[ ] sendBuffer = message.getBytes( );
+
+        //read the file sent to the server
+        FileInputStream readInput = new FileInputStream(message);
+
+
+        DatagramPacket datagram =
+                new DatagramPacket(sendBuffer, sendBuffer.length,
+                        receiverHost, receiverPort);
+        this.send(datagram);
+    } // end sendMessage
+
 
 
 
