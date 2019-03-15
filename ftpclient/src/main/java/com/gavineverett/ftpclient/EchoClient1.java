@@ -109,7 +109,7 @@ public class EchoClient1 {
                             //retrieve file from the upload
                             File file = helper.fileupload();
                             filename = file.getName();
-                            System.out.println("Testing" + filename);
+                            System.out.println("Sending file to server(please wait) : " + filename);
                             //send the file to the server
 
                            String msg =  helper.sendToServer(file, filename);

@@ -132,7 +132,7 @@ public class EchoClientHelper1 {
                                 System.out.println("The file selected exceeds 64kbs! Please select another file.");
                             } else {
                                 //This is where a real application would open the file.
-                                System.out.println("File: " + file.getName() + ".");
+                                System.out.println("File to be uploaded : " + file.getName() + ".");
                                 notComplete = true;
 
                             }
