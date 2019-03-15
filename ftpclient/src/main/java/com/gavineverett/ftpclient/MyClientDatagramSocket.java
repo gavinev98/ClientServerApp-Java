@@ -40,15 +40,21 @@ public class MyClientDatagramSocket extends DatagramSocket {
     } //end receiveMessage
 
 
+    //send file to server.
     public void sendFile(InetAddress receiverHost,
                             int receiverPort,
                             File message)
             throws IOException {
-        byte[ ] sendBuffer = message.getBytes( );
+        /*https://www.mkyong.com/java/how-to-convert-file-into-an-array-of-bytes/ */
+        //converts file received into an array of bytes.
+        byte[ ] sendBuffer = new byte[(int) message.length()];
 
         //read the file sent to the server
         FileInputStream readInput = new FileInputStream(message);
-
+        //read all data from the file input stream.
+        readInput.read();
+        //close the file input stream and release system resources.
+        readInput.close();
 
         DatagramPacket datagram =
                 new DatagramPacket(sendBuffer, sendBuffer.length,

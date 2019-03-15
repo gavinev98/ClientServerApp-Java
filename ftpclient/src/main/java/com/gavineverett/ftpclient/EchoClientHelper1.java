@@ -122,6 +122,16 @@ public class EchoClientHelper1 {
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setVisible(true);
 
+            //Get the socket,
+            try {
+                mySocket.sendFile(serverHost, serverPort, file);
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            // recieve echo back
+          //  receivedata = mySocket.receiveMessage();
+           // return receivedata;
+
 
             return file;
         }
