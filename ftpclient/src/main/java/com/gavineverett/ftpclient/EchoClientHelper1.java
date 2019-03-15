@@ -16,6 +16,7 @@ public class EchoClientHelper1 {
     private int serverPort;
 
     private File file;
+    private static boolean selectFile = true;
 
     private final static int MAX_PACKET_SIZE = 64;
 
@@ -67,6 +68,22 @@ public class EchoClientHelper1 {
 
         }
 
+    public String sendToServer(File file, String filename)
+            throws SocketException, IOException {
+        String receivedata = "";
+        // retrieve the message inputted by the user e.g login.
+        String filetosend = "300-" + file + "-" + filename;
+        //Get the socket,
+        //send normal message with request code.
+        mySocket.sendMessage(serverHost, serverPort, filetosend);
+        // Then send the file across the server.
+        mySocket.sendFile(serverHost,serverPort,file);
+        // recieve echo back
+        receivedata = mySocket.receiveMessage();
+        return receivedata;
+
+    }
+
         public File fileupload() {
 
             String receivedata = "";
@@ -92,28 +109,33 @@ public class EchoClientHelper1 {
             btnFile.addActionListener(new ActionListener() {
                 //Handle open button action.
                 public void actionPerformed(ActionEvent e) {
-                    final JFileChooser fc = new JFileChooser();
-                    //set directory to the current directory.
-                    fc.setCurrentDirectory(userDirectory);
-                    int returnVal = fc.showOpenDialog(frame);
-                    if (returnVal == JFileChooser.APPROVE_OPTION) {
-                        file = fc.getSelectedFile();
-                        //check the the file size.
-                        long file_size = file.length();
-                        //check if file size is greater than 64kbs.
-                        if(file_size > MAX_PACKET_SIZE)
-                        {
-                            System.out.println("The file selected exceeds 64kbs! Please select another file.");
+                        final JFileChooser fc = new JFileChooser();
+                        //set directory to the current directory.
+                        fc.setCurrentDirectory(userDirectory);
+                        int returnVal = fc.showOpenDialog(frame);
+                        if (returnVal == JFileChooser.APPROVE_OPTION) {
+                            file = fc.getSelectedFile();
+                            //check the the file size.
+                            long file_size = file.length();
+                            //check if file size is greater than 64kbs.
+                            if (file_size > MAX_PACKET_SIZE) {
+                                System.out.println("The file selected exceeds 64kbs! Please select another file.");
+                            } else {
+                                //This is where a real application would open the file.
+                                System.out.println("File: " + file.getName() + ".");
+                            }
+                            if(file.length() > 0) {
+                                selectFile = false;
+                                //Get the socket,
+                                try {
+                                    mySocket.sendFile(serverHost, serverPort, file);
+                                } catch (IOException e1) {
+                                    e1.printStackTrace();
+                                }
+                            }
                         }
-                        else {
-                            //This is where a real application would open the file.
-                            System.out.println("File: " + file.getName() + ".");
-                        }
-                    } else {
-                        System.out.println("Open command cancelled by user.");
+
                     }
-                    System.out.println(returnVal);
-                }
             });
 
             frame.getContentPane().add(btnFile);
@@ -122,12 +144,8 @@ public class EchoClientHelper1 {
             frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             frame.setVisible(true);
 
-            //Get the socket,
-            try {
-                mySocket.sendFile(serverHost, serverPort, file);
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
+
+
             // recieve echo back
           //  receivedata = mySocket.receiveMessage();
            // return receivedata;
@@ -148,8 +166,6 @@ public class EchoClientHelper1 {
     public void done( ) throws SocketException {
         mySocket.close( );
     }  //end done
-
-
 
 
 } //end class

@@ -46,4 +46,18 @@ public class MyServerDatagramSocket extends DatagramSocket {
                 datagram.getPort( ));
         return returnVal;
     } //end receiveMessage
+
+    //Receive the file on the server from byte array.
+    public byte[] recieveFile()
+            throws IOException {
+        byte[ ] msgdata = new byte[MAX_LEN];
+        DatagramPacket datagram =
+                new DatagramPacket(msgdata, MAX_LEN);
+        this.receive(datagram);
+
+        //return the message data
+        return msgdata;
+    } //end receiveMessage
+
+
 } //end class

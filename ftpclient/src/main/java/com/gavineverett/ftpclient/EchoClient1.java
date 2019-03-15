@@ -105,7 +105,13 @@ public class EchoClient1 {
                     {
                         case "F":
                             //fileupload
-                            helper.fileupload();
+                            //retrieve file from the upload
+                           File file = helper.fileupload();
+                           String filename = file.getName();
+                           //send the file to the server
+                           String msg =  helper.sendToServer(file, filename);
+                            //retrieve message back from server.
+                            System.out.println(msg);
 
                             break;
 

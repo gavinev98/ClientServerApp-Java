@@ -72,6 +72,11 @@ public class EchoServer1 {
 
                     case fileUpload:
                         //fileupload
+                        //Receive the message data from the client.
+                        byte[] request1 =  mySocket.recieveFile();
+                        String rec = new String(request1, "UTF-8");
+                        System.out.println("File recieved" + rec);
+
 
 
                         break;
