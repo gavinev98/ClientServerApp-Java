@@ -111,11 +111,9 @@ public class EchoClient1 {
                             filename = file.getName();
                             System.out.println("Sending file to server(please wait) : " + filename);
                             //send the file to the server
-
                            String msg =  helper.sendToServer(file, filename);
                             //retrieve message back from server.
                             System.out.println(msg);
-
                             break;
 
 

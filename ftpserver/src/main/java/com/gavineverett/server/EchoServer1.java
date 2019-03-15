@@ -9,6 +9,7 @@ public class EchoServer1 {
     public static final String logout = "204";
     public static final String fileUpload = "300";
     public static final String fileDownload = "500";
+    public static String sucess = "";
     static File userDirectory;
 
     public static void main(String[] args) {
@@ -74,17 +75,13 @@ public class EchoServer1 {
                         //fileupload
                         //Receive the message data from the client.
                         byte[] request1 =  mySocket.recieveFile();
-                        System.out.println("Write bytes to file.");
+                        System.out.println("File received");
+                        System.out.println("Performing upload operation");
                         //convert byte array and upload to local directory
-                        String uploadFile =  performUploadOperation(request1);
-
-
-                        //validate and upload the file
-
-                        System.out.println("File received" + rec);
-
-
-
+                        String uploadFile =  performUploadOperation(request1, password);
+                        //send response back to the client.
+                        mySocket.sendMessage(request.getAddress(),
+                                request.getPort(), uploadFile);
                         break;
 
                     case fileDownload:
@@ -164,9 +161,26 @@ public class EchoServer1 {
         return null;
     }
 
-    public static String performUploadOperation(byte[] file)
+    public static String performUploadOperation(byte[] file, String filename)
     {
+        //creating a directory to store the new file
+        File userDirectory = new File("C:\\UploadedFiless\\" + filename);
+        //check if directory does not exist.
+        if (!userDirectory.exists()) {
+            userDirectory.mkdir();
+        }
 
+        //convert the bytearray retrieved to a file and upload to server folder.
+        try (FileOutputStream fos = new FileOutputStream(userDirectory)) {
+            //write file to directory.
+            fos.write(file);
+             sucess = "600 - The file has been successfully uploaded!";
+        }
+        catch(Exception ex)
+        {
+            ex.printStackTrace();
+        }
+        return sucess;
     }
 }
 
