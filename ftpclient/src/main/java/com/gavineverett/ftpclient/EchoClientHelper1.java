@@ -4,6 +4,7 @@ package com.gavineverett.ftpclient;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
@@ -90,15 +91,20 @@ public class EchoClientHelper1 {
             String receivedata = "";
 
             //creating a directory to store users
-            File userDirectory = new File("C:\\ClientFiles");
+            File userDirectory = new File("C:\\Client");
             //check if directory does not exist.
             if (!userDirectory.exists()) {
                 userDirectory.mkdir();
                 String filetemp = "Upload" + ".txt";
-                File crreate = new File("C:\\ClientFiles", filetemp);
-                try {
-                    crreate.createNewFile();
-                } catch (IOException e) {
+                    File crreate = new File("C:\\Client", filetemp);
+                    try {
+                        crreate.createNewFile();
+
+                        PrintWriter writer = new PrintWriter(crreate, "UTF-8");
+                        writer.println("The first line");
+                        writer.println("The second line");
+                        writer.close();
+                    } catch (IOException e) {
                     e.printStackTrace();
                 }
 

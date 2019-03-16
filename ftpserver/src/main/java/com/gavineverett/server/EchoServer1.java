@@ -9,8 +9,8 @@ public class EchoServer1 {
     public static final String logout = "204";
     public static final String fileUpload = "300";
     public static final String fileDownload = "500";
-    public static String sucess = "";
     static File userDirectory;
+    private static boolean isCreated = false;
 
     public static void main(String[] args) {
 
@@ -75,10 +75,16 @@ public class EchoServer1 {
                         //fileupload
                         //Receive the message data from the client.
                         byte[] request1 =  mySocket.recieveFile();
+                        //remove whitespace from file coming onto server.
+                        String filetoUpload = credentials[2].trim();
+                        System.out.println(filetoUpload);
                         System.out.println("File received");
                         System.out.println("Performing upload operation");
+                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
+                        stream.write(request1);
+                        System.out.println("Testing strign " + stream);
                         //convert byte array and upload to local directory
-                        String uploadFile =  performUploadOperation(request1, password);
+                        String uploadFile =  performUploadOperation(request1, filetoUpload);
                         //send response back to the client.
                         mySocket.sendMessage(request.getAddress(),
                                 request.getPort(), uploadFile);
@@ -163,28 +169,27 @@ public class EchoServer1 {
 
     public static String performUploadOperation(byte[] file, String filename)
             throws IOException {
-        //creating a directory to store the new file
+        //creating a directory to store file.
         //creating a directory to store users
-        File userDirectory = new File("C:\\UploadedFiles");
+        File userDirectory = new File("C:\\ServerUploads");
         //check if directory does not exist.
         if (!userDirectory.exists()) {
             userDirectory.mkdir();
         }
 
-            File crreate = new File("C:\\UploadedFiles\\"+ filename);
-            try {
-                crreate.createNewFile();
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-
+            //create new file in the directory.
+            File crreate = new File(userDirectory + "\\" +  filename);
+            if(!crreate.exists())
+            crreate.createNewFile();
 
 
         //convert the bytearray retrieved to a file and upload to server folder.
        FileOutputStream fos = new FileOutputStream(crreate);
             //write file to directory.
             fos.write(file);
-        sucess = "600 - The file has been successfully uploaded!";
+            fos.close();
+
+        String sucess = "600 - The file has been successfully uploaded!";
         return sucess;
     }
 }
