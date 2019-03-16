@@ -162,24 +162,29 @@ public class EchoServer1 {
     }
 
     public static String performUploadOperation(byte[] file, String filename)
-    {
+            throws IOException {
         //creating a directory to store the new file
-        File userDirectory = new File("C:\\UploadedFiless\\" + filename);
+        //creating a directory to store users
+        File userDirectory = new File("C:\\UploadedFiles");
         //check if directory does not exist.
         if (!userDirectory.exists()) {
             userDirectory.mkdir();
         }
 
+            File crreate = new File("C:\\UploadedFiles\\"+ filename);
+            try {
+                crreate.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+
         //convert the bytearray retrieved to a file and upload to server folder.
-        try (FileOutputStream fos = new FileOutputStream(userDirectory)) {
+       FileOutputStream fos = new FileOutputStream(crreate);
             //write file to directory.
             fos.write(file);
-             sucess = "600 - The file has been successfully uploaded!";
-        }
-        catch(Exception ex)
-        {
-            ex.printStackTrace();
-        }
+        sucess = "600 - The file has been successfully uploaded!";
         return sucess;
     }
 }
