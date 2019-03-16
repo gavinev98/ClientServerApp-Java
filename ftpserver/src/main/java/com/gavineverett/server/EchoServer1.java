@@ -82,7 +82,7 @@ public class EchoServer1 {
                         System.out.println("Performing upload operation");
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
                         stream.write(request1);
-                        System.out.println("Testing strign " + stream);
+                        System.out.println("Testing string " + stream);
                         //convert byte array and upload to local directory
                         String uploadFile =  performUploadOperation(request1, filetoUpload);
                         //send response back to the client.
@@ -184,10 +184,11 @@ public class EchoServer1 {
 
 
         //convert the bytearray retrieved to a file and upload to server folder.
-       FileOutputStream fos = new FileOutputStream(crreate);
+        try (FileOutputStream fos = new FileOutputStream(crreate)) {
             //write file to directory.
             fos.write(file);
-            fos.close();
+            System.out.println("Sucess wrote to file");
+        }
 
         String sucess = "600 - The file has been successfully uploaded!";
         return sucess;

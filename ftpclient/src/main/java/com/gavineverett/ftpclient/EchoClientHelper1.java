@@ -113,9 +113,9 @@ public class EchoClientHelper1 {
 
                 /* https://stackoverflow.com/questions/8402889/working-with-jfilechooser-getting-access-to-the-selected-file */
                 final JFrame frame = new JFrame("Client-Server");
-                JButton btnFile = new JButton("Upload a File");
-            while (!notComplete) {
-                frame.getContentPane().add(btnFile);
+                    JButton btnFile = new JButton("Upload a File");
+                    while (!notComplete) {
+                        frame.getContentPane().add(btnFile);
                 frame.setSize(500, 500);
                 frame.setLocationRelativeTo(null);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
