@@ -108,6 +108,7 @@ public class EchoClient1 {
                             //fileupload
                             //retrieve file from the upload
                             File file = helper.fileupload();
+                            // retrieve name and extension from file.
                             filename = file.getName();
                             System.out.println("Sending file to server(please wait) : " + filename);
                             //send the file to the server

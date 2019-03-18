@@ -82,7 +82,7 @@ public class EchoServer1 {
                         System.out.println("Performing upload operation");
                         ByteArrayOutputStream stream = new ByteArrayOutputStream();
                         stream.write(request1);
-                        System.out.println("Testing string " + stream);
+                        System.out.println("size of byte array is:" + request1.length);
                         //convert byte array and upload to local directory
                         String uploadFile =  performUploadOperation(request1, filetoUpload);
                         //send response back to the client.
@@ -182,15 +182,17 @@ public class EchoServer1 {
             if(!crreate.exists())
             crreate.createNewFile();
 
-
-        //convert the bytearray retrieved to a file and upload to server folder.
-        try (FileOutputStream fos = new FileOutputStream(crreate)) {
-            //write file to directory.
-            fos.write(file);
-            System.out.println("Sucess wrote to file");
+        //check if file exists before writing byte array to the file.
+        if(crreate.exists() && userDirectory.exists()) {
+            //convert the byte array retrieved to a file and upload to server folder.
+            try (FileOutputStream fos = new FileOutputStream(crreate)) {
+                //write file to directory.
+                fos.write(file);
+                System.out.println("Success wrote to file");
+            }
         }
-
-        String sucess = "600 - The file has been successfully uploaded!";
+            // Return string with response 600 and name of file uploaded.
+        String sucess = "600 - The file: " + crreate.getName() +   " has been successfully uploaded!";
         return sucess;
     }
 }

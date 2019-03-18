@@ -50,11 +50,9 @@ public class MyClientDatagramSocket extends DatagramSocket {
         byte[ ] sendBuffer = new byte[(int) message.length()];
 
         //read the file sent to the server
-        FileInputStream readInput = new FileInputStream(message);
-        //read all data from the file input stream.
-        readInput.read();
-        //close the file input stream and release system resources.
-        readInput.close();
+       try(FileInputStream readInput = new FileInputStream(message)){
+        //read all byte data in file.
+        readInput.read(sendBuffer);}
         //send datagram packet.
         DatagramPacket datagram =
                 new DatagramPacket(sendBuffer, sendBuffer.length,
