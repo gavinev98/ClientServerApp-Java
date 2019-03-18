@@ -126,10 +126,10 @@ public class EchoServer1 {
                 in.close();
                 String outString = sb.toString();
                 if (outString.equals(password)) {
-                    String auth = "304:" + "Welcome back to the system: " + username;
+                    String auth = "202:" + "Welcome back to the system: " + username;
                     return auth;
                 } else {
-                    String invalidCredentials = "506:" + "Invalid credentials! User exists!";
+                    String invalidCredentials = "405:" + "Invalid credentials! User exists!";
                     return invalidCredentials;
                 }
 
@@ -156,7 +156,7 @@ public class EchoServer1 {
 
     public static String performLogoutOperation(String username) {
         try {
-            String logoutMessage = "250: " + "The user: " + username + " has been successfully logged out.";
+            String logoutMessage = "420: " + "The user: " + username + " has been successfully logged out.";
 
             return logoutMessage;
 
@@ -192,7 +192,7 @@ public class EchoServer1 {
             }
         }
             // Return string with response 600 and name of file uploaded.
-        String sucess = "600 - The file: " + crreate.getName() +   " has been successfully uploaded!";
+        String sucess = "302 - The file: " + crreate.getName() +   " has been successfully uploaded!";
         return sucess;
     }
 }

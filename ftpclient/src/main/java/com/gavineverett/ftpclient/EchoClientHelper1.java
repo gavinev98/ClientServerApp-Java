@@ -135,7 +135,7 @@ public class EchoClientHelper1 {
                             long file_size = file.length();
                             //check if file size is greater than 64kbs.
                             if (file_size > MAX_PACKET_SIZE) {
-                                System.out.println("The file selected exceeds 64kbs! Please select another file.");
+                                System.out.println(" 308 - The file selected exceeds 64kbs! Please select another file.");
                             } else {
                                 //This is where a real application would open the file.
                                 System.out.println("File to be uploaded : " + file.getName() + ".");

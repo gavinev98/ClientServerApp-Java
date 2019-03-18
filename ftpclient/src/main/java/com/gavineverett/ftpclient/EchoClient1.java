@@ -83,7 +83,7 @@ public class EchoClient1 {
                         done =false;
                         break;
 
-                    case "204":
+                    case "202":
                         userSession = true;
                         done =true;
                         break;
@@ -120,6 +120,7 @@ public class EchoClient1 {
 
                         case "D":
                             //download
+
                              break;
 
 
