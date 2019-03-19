@@ -6,6 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="62476b67-4251-498d-8767-b63eddbacde9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ftpclient/target/classes/com/gavineverett/ftpclient/EchoClient1.class" beforeDir="false" afterPath="$PROJECT_DIR$/ftpclient/target/classes/com/gavineverett/ftpclient/EchoClient1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/EchoServer1.java" beforeDir="false" afterPath="$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/EchoServer1.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -86,15 +87,15 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="18073" />
-          <entry key="txt" value="1385" />
+          <entry key="java" value="18211" />
+          <entry key="txt" value="1419" />
           <entry key="xml" value="4" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="18073" />
-          <entry key="PLAIN_TEXT" value="1385" />
+          <entry key="JAVA" value="18211" />
+          <entry key="PLAIN_TEXT" value="1419" />
           <entry key="XML" value="4" />
         </counts>
       </usages-collector>
@@ -123,8 +124,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/EchoServer1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="247">
-              <caret line="206" column="49" selection-start-line="206" selection-start-column="25" selection-end-line="206" selection-end-column="49" />
+            <state relative-caret-position="349">
+              <caret line="210" column="8" selection-start-line="210" selection-start-column="8" selection-end-line="210" selection-end-column="8" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -365,7 +366,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553010326676" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553012292554" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
@@ -698,7 +699,14 @@
       <option name="project" value="LOCAL" />
       <updated>1553008185037</updated>
     </task>
-    <option name="localTasksCounter" value="34" />
+    <task id="LOCAL-00034" summary="created download file directory.">
+      <created>1553010431827</created>
+      <option name="number" value="00034" />
+      <option name="presentableId" value="LOCAL-00034" />
+      <option name="project" value="LOCAL" />
+      <updated>1553010431827</updated>
+    </task>
+    <option name="localTasksCounter" value="35" />
     <servers />
   </component>
   <component name="ToolWindowManager">
@@ -769,7 +777,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Login nearly working, removed message method." />
     <MESSAGE value="Basic Login working" />
     <MESSAGE value="Implemented user/password login working." />
     <MESSAGE value="Added validation for login." />
@@ -794,7 +801,8 @@
     <MESSAGE value="Created request to server method." />
     <MESSAGE value="displaying files from directory." />
     <MESSAGE value="sending file to server." />
-    <option name="LAST_COMMIT_MESSAGE" value="sending file to server." />
+    <MESSAGE value="created download file directory." />
+    <option name="LAST_COMMIT_MESSAGE" value="created download file directory." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pom.xml">
@@ -929,8 +937,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/EchoServer1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="247">
-          <caret line="206" column="49" selection-start-line="206" selection-start-column="25" selection-end-line="206" selection-end-column="49" />
+        <state relative-caret-position="349">
+          <caret line="210" column="8" selection-start-line="210" selection-start-column="8" selection-end-line="210" selection-end-column="8" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>

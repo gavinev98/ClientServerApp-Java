@@ -204,33 +204,16 @@ public class EchoServer1 {
         return sucess;
     }
 
-    public static String perfgrmDownloadOperation(String filename)
+    public static String performDownloadOperation(String filename)
             throws IOException {
         // acquire the filename to be downloaded.
         String fileToDownload = filename;
-
-        //setup a directory path
-        String directoryPath = "C:\\DownloadedFiles";
-        File downloadPath = new File(directoryPath);
-
-        if(!downloadPath.exists())
-        {
-            downloadPath.mkdir();
-        }
-
-
-
-
-
-
-
-
-
-
+        
+        OutputStream outputStream = new BufferedOutputStream(new FileOutputStream(filename));
 
         return null;
-
     }
+
 }
 
     // end class
