@@ -92,16 +92,10 @@ public class EchoClientHelper1 {
         //send request to server
         String downloadRequest = "500-" + filename;
         //Get the socket
-        mySocket.sendDownload(serverHost,serverPort, filename);
+        mySocket.sendMessage(serverHost,serverPort, filename);
         //Retrieve the echo back from the server
         recievedata = mySocket.receiveMessage();
         return recievedata;
-
-
-
-
-
-        return null;
 
     }
 

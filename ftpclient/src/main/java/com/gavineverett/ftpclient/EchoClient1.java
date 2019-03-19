@@ -120,6 +120,21 @@ public class EchoClient1 {
 
                         case "D":
                             //download
+                            File folder = new File("C:\\Client");
+                            File[] listOfFiles = folder.listFiles();
+                            // loop over contents of directory
+                            for (int i = 0; i < listOfFiles.length; i++) {
+                                //ask user for the name of a file they wish to download , show a list of files in the temporary directory.
+                                System.out.println("-----\nHere is a list of files:---" + "\n" +  listOfFiles[i].getName());
+                                System.out.println("Please enter the name of a file that you wish to download");
+                                //Read input for command line
+                                InputStreamReader convertoption = new InputStreamReader(System.in);
+                                BufferedReader in1 = new BufferedReader(convertoption);
+                                String fileChosen = in1.readLine();
+
+
+                            }
+
 
                              break;
 
