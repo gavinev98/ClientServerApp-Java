@@ -86,6 +86,19 @@ public class EchoClientHelper1 {
 
     }
 
+    public String sendDownloadRequest(String filename)
+            throws SocketException, IOException {
+        String recievedata = "";
+        
+
+
+        return null;
+
+    }
+
+
+
+
         public File fileupload() {
 
             String receivedata = "";
