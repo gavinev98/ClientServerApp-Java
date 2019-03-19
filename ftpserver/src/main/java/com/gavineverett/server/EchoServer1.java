@@ -92,6 +92,14 @@ public class EchoServer1 {
 
                     case fileDownload:
                         //filedownload
+                        // credentials one will bring back the 3nd parameter in the message received.
+                        String filenameRecieved = credentials[2].trim();
+                        System.out.println("Download Request received: " + filenameRecieved);
+                        String downloadFile = performDownloadOperation(filenameRecieved);
+
+
+
+
                         break;
 
 
@@ -194,6 +202,34 @@ public class EchoServer1 {
             // Return string with response 600 and name of file uploaded.
         String sucess = "302 - The file: " + crreate.getName() +   " has been successfully uploaded!";
         return sucess;
+    }
+
+    public static String perfgrmDownloadOperation(String filename)
+            throws IOException {
+        // acquire the filename to be downloaded.
+        String fileToDownload = filename;
+
+        //setup a directory path
+        String directoryPath = "C:\\DownloadedFiles";
+        File downloadPath = new File(directoryPath);
+
+        if(!downloadPath.exists())
+        {
+            downloadPath.mkdir();
+        }
+
+
+
+
+
+
+
+
+
+
+
+        return null;
+
     }
 }
 
