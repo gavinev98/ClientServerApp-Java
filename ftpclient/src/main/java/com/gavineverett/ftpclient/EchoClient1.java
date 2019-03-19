@@ -131,11 +131,13 @@ public class EchoClient1 {
                                 InputStreamReader convertoption = new InputStreamReader(System.in);
                                 BufferedReader in1 = new BufferedReader(convertoption);
                                 String fileChosen = in1.readLine();
+                                System.out.println("Thank you" + fileChosen + "is now being processed");
+                                String recieveMsg = helper.sendDownloadRequest(fileChosen);
+                                System.out.println(recieveMsg);
+
 
 
                             }
-
-
                              break;
 
 
