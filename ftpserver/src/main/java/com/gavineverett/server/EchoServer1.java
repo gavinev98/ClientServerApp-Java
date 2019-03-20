@@ -99,7 +99,7 @@ public class EchoServer1 {
                         //send file to the client for downloading
                         System.out.println(downloadFile);
                         mySocket.sendMessage(request.getAddress(),request.getPort(),
-                                "Sending file to client: " + downloadFile);
+                                "The file is now downloading: " + downloadFile);
                         break;
 
 
@@ -212,7 +212,7 @@ public class EchoServer1 {
         // acquire the filename to be downloaded.
         String fileToDownload = "C:\\ServerSession\\" + filename;
         //find the file and read all the contents of the file.
-        FileInputStream fis = new FileInputStream(filename);
+        FileInputStream fis = new FileInputStream(fileToDownload);
         //create bytearray to store array.
         byte[] data = new byte[(int) filename.length()];
         //read data from the input stream.
@@ -222,11 +222,12 @@ public class EchoServer1 {
 
         //create a new string with all of the content
         String filetoDownload = new String(data, "UTF-8");
-
+        //returning the file possibly need array??>.
         return filetoDownload;
     }
 
 
+    //creating temporary file for the download operation.
     public static void createTempFileForDownload()
     {
         String fileName="Download";
@@ -234,6 +235,12 @@ public class EchoServer1 {
         if(!tagFile.exists()){
             try {
                 tagFile.createNewFile();
+
+                PrintWriter writer = new PrintWriter(tagFile, "UTF-8");
+                writer.println("The first line");
+                writer.println("The second line");
+                writer.close();
+
             } catch (IOException e) {
                 e.printStackTrace();
             }

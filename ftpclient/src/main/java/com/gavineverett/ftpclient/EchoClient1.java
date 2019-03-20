@@ -133,7 +133,14 @@ public class EchoClient1 {
                                 BufferedReader in1 = new BufferedReader(convertoption);
                                 String fileChosen = in1.readLine();
                                 System.out.println("Thank you: " + fileChosen + " is now being processed");
-                                String recieveMsg = helper.sendDownloadRequest(userNameVal,fileChosen);
+
+                                //create a file in the client directory with the name the user has requested
+                                File createFile = new File("C:\\Client\\",fileChosen);
+                                //receive information back from the server which should include the content of the file.
+                                String receiveMsg = helper.sendDownloadRequest(userNameVal,fileChosen);
+                                System.out.println("Downloading file...");
+                                System.out.println("File sucessfully downloaded");
+
 
 
                             }
