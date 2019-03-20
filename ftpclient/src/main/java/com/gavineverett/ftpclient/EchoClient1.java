@@ -138,14 +138,20 @@ public class EchoClient1 {
                                     createFile.createNewFile();
                                 //receive information back from the server which should include the content of the file.
                                 String receiveMsg = helper.sendDownloadRequest(userNameVal,fileChosen);
-                                System.out.println("Data Recieved" + receiveMsg);
                                 System.out.println("Downloading file...");
                                 System.out.println("File successfully downloaded");
                                 //get the data received from the server and write it to the file.
-                                PrintWriter writeToFile = new PrintWriter(fileChosen);
-                                //witting to file.
-                                writeToFile.write(receiveMsg);
-                                writeToFile.close();
+
+                                if(receiveMsg.length() > 0) {
+                                    PrintWriter writeToFile = new PrintWriter(createFile);
+                                    //witting to file.
+                                    writeToFile.write(receiveMsg);
+                                    writeToFile.close();
+                                }
+                                else
+                                {
+                                    System.out.println("No data received");
+                                }
 
                             }
                             break;

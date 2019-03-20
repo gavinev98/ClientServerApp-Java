@@ -65,7 +65,6 @@ public class EchoServer1 {
                     case logout:
                         //logout
                         String loggedOutUser = username;
-                        System.out.println("In Logout method");
                         //Perform logout
                         String logoutCheck = performLogoutOperation(loggedOutUser);
                         //send message back to the client.
@@ -82,9 +81,6 @@ public class EchoServer1 {
                         System.out.println(filetoUpload);
                         System.out.println("File received");
                         System.out.println("Performing upload operation");
-                        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-                        stream.write(request1);
-                        System.out.println("size of byte array is:" + request1.length);
                         //convert byte array and upload to local directory
                         String uploadFile =  performUploadOperation(request1, filetoUpload);
                         //send response back to the client.
@@ -99,7 +95,6 @@ public class EchoServer1 {
                         System.out.println("Download Request received: " + filenameRecieved);
                         String downloadFile = performDownloadOperation(filenameRecieved);
                         //send file to the client for downloading
-                        System.out.println(downloadFile);
                         mySocket.sendMessage(request.getAddress(),request.getPort(),
                                  downloadFile);
                         break;
@@ -215,6 +210,7 @@ public class EchoServer1 {
         String fileToDownload = "C:\\ServerSession\\"+ "test\\" + filename;
         //find the file and read all the contents of the file.
 
+        //read all bytes from the file.
         String content = new String(Files.readAllBytes(Paths.get(fileToDownload)));
 
         //returning the file possibly need array??>.
