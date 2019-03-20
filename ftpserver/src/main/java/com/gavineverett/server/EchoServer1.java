@@ -1,6 +1,8 @@
 package com.gavineverett.server;
 
 import java.io.*;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.util.Scanner;
 
 public class EchoServer1 {
@@ -99,7 +101,7 @@ public class EchoServer1 {
                         //send file to the client for downloading
                         System.out.println(downloadFile);
                         mySocket.sendMessage(request.getAddress(),request.getPort(),
-                                "The file is now downloading: " + downloadFile);
+                                 downloadFile);
                         break;
 
 
@@ -212,18 +214,11 @@ public class EchoServer1 {
         // acquire the filename to be downloaded.
         String fileToDownload = "C:\\ServerSession\\"+ "test\\" + filename;
         //find the file and read all the contents of the file.
-        FileInputStream fis = new FileInputStream(fileToDownload);
-        //create bytearray to store array.
-        byte[] data = new byte[(int) filename.length()];
-        //read data from the input stream.
-        fis.read(data);
-        //close input stream.
-        fis.close();
 
-        //create a new string with all of the content
-        String filetoDownload = new String(data, "UTF-8");
+        String content = new String(Files.readAllBytes(Paths.get(fileToDownload)));
+
         //returning the file possibly need array??>.
-        return filetoDownload;
+        return content;
     }
 
 
