@@ -210,7 +210,7 @@ public class EchoServer1 {
             throws IOException {
         //create temp folder for file.
         // acquire the filename to be downloaded.
-        String fileToDownload = "C:\\ServerSession\\" + filename;
+        String fileToDownload = "C:\\ServerSession\\"+ "test\\" + filename;
         //find the file and read all the contents of the file.
         FileInputStream fis = new FileInputStream(fileToDownload);
         //create bytearray to store array.
@@ -231,12 +231,16 @@ public class EchoServer1 {
     public static void createTempFileForDownload()
     {
         String fileName="Download";
-        File tagFile=new File("C:\\ServerSession\\",fileName+".txt");
+        File tagFile=new File("C:\\ServerSession\\"+ "test");
         if(!tagFile.exists()){
             try {
-                tagFile.createNewFile();
+                tagFile.mkdir();
 
-                PrintWriter writer = new PrintWriter(tagFile, "UTF-8");
+                File createFile =new File("C:\\ServerSession\\"+ "test\\" +  fileName+".txt");
+                if(!createFile.exists())
+                    createFile.createNewFile();
+
+                PrintWriter writer = new PrintWriter(createFile, "UTF-8");
                 writer.println("The first line");
                 writer.println("The second line");
                 writer.close();

@@ -10,9 +10,7 @@ import javafx.scene.control.Button;
 
 import javax.swing.*;
 import java.awt.*;
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.InputStreamReader;
+import java.io.*;
 import java.io.File;
 
 import javax.swing.JFileChooser;
@@ -120,7 +118,7 @@ public class EchoClient1 {
 
                         case "D":
                             //download
-                            File folder = new File("C:\\ServerSession\\");
+                            File folder = new File("C:\\ServerSession\\" + "test\\");
                             File[] listOfFiles = folder.listFiles();
                             //setting value to blank as I am not sending anything in the request.
                             // loop over contents of directory
@@ -136,15 +134,19 @@ public class EchoClient1 {
 
                                 //create a file in the client directory with the name the user has requested
                                 File createFile = new File("C:\\Client\\",fileChosen);
+                                if(!createFile.exists())
+                                    createFile.createNewFile();
                                 //receive information back from the server which should include the content of the file.
                                 String receiveMsg = helper.sendDownloadRequest(userNameVal,fileChosen);
                                 System.out.println("Downloading file...");
-                                System.out.println("File sucessfully downloaded");
-
-
+                                System.out.println("File successfully downloaded");
+                                //get the data received from the server and write it to the file.
+                                PrintWriter writeToFile = new PrintWriter(fileChosen);
+                                //witting to file.
+                                writeToFile.println(receiveMsg);
 
                             }
-                             break;
+                            break;
 
 
                         case "L":
