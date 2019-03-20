@@ -120,8 +120,9 @@ public class EchoClient1 {
 
                         case "D":
                             //download
-                            File folder = new File("C:\\Client");
+                            File folder = new File("C:\\ServerSession\\");
                             File[] listOfFiles = folder.listFiles();
+                            //setting value to blank as I am not sending anything in the request.
                             // loop over contents of directory
                             for (int i = 0; i < listOfFiles.length; i++) {
                                 //ask user for the name of a file they wish to download , show a list of files in the temporary directory.
@@ -131,10 +132,8 @@ public class EchoClient1 {
                                 InputStreamReader convertoption = new InputStreamReader(System.in);
                                 BufferedReader in1 = new BufferedReader(convertoption);
                                 String fileChosen = in1.readLine();
-                                System.out.println("Thank you" + fileChosen + "is now being processed");
-                                String recieveMsg = helper.sendDownloadRequest(fileChosen);
-                                System.out.println(recieveMsg);
-
+                                System.out.println("Thank you: " + fileChosen + " is now being processed");
+                                String recieveMsg = helper.sendDownloadRequest(userNameVal,fileChosen);
 
 
                             }

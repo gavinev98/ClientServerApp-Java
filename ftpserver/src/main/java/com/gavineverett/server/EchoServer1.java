@@ -96,10 +96,10 @@ public class EchoServer1 {
                         String filenameRecieved = credentials[2].trim();
                         System.out.println("Download Request received: " + filenameRecieved);
                         String downloadFile = performDownloadOperation(filenameRecieved);
-
-
-
-
+                        //send file to the client for downloading
+                        System.out.println(downloadFile);
+                        mySocket.sendMessage(request.getAddress(),request.getPort(),
+                                "Sending file to client: " + downloadFile);
                         break;
 
 
@@ -135,6 +135,7 @@ public class EchoServer1 {
                 String outString = sb.toString();
                 if (outString.equals(password)) {
                     String auth = "202:" + "Welcome back to the system: " + username;
+                    createTempFileForDownload();
                     return auth;
                 } else {
                     String invalidCredentials = "405:" + "Invalid credentials! User exists!";
@@ -152,6 +153,7 @@ public class EchoServer1 {
                 writePass.close();
                 //output sucessfully registered message.
                 String registered = "204:" + "You have been successfully registered: " + username + " enjoy!";
+                createTempFileForDownload();
                 //return string registered if user has successfully been registered.
                 return registered;
             }
@@ -206,13 +208,38 @@ public class EchoServer1 {
 
     public static String performDownloadOperation(String filename)
             throws IOException {
+        //create temp folder for file.
         // acquire the filename to be downloaded.
-        String fileToDownload = filename;
-        
-        OutputStream outputStream = new BufferedOutputStream(new FileOutputStream(filename));
+        String fileToDownload = "C:\\ServerSession\\" + filename;
+        //find the file and read all the contents of the file.
+        FileInputStream fis = new FileInputStream(filename);
+        //create bytearray to store array.
+        byte[] data = new byte[(int) filename.length()];
+        //read data from the input stream.
+        fis.read(data);
+        //close input stream.
+        fis.close();
 
-        return null;
+        //create a new string with all of the content
+        String filetoDownload = new String(data, "UTF-8");
+
+        return filetoDownload;
     }
+
+
+    public static void createTempFileForDownload()
+    {
+        String fileName="Download";
+        File tagFile=new File("C:\\ServerSession\\",fileName+".txt");
+        if(!tagFile.exists()){
+            try {
+                tagFile.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
 
 }
 

@@ -86,13 +86,13 @@ public class EchoClientHelper1 {
 
     }
 
-    public String sendDownloadRequest(String filename)
+    public String sendDownloadRequest(String username, String filename)
             throws SocketException, IOException {
         String recievedata = "";
         //send request to server
-        String downloadRequest = "500-" + filename;
+        String downloadRequest = "500-" + username +"-"+ filename;
         //Get the socket
-        mySocket.sendMessage(serverHost,serverPort, filename);
+        mySocket.sendMessage(serverHost,serverPort, downloadRequest);
         //Retrieve the echo back from the server
         recievedata = mySocket.receiveMessage();
         return recievedata;
