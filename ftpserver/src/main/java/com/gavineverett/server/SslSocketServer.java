@@ -1,11 +1,21 @@
 package com.gavineverett.server;
 
+/* SslSocketServer.java
+ - Copyright (c) 2014, HerongYang.com, All Rights Reserved.
+ */
+ /*
+ Since my SSL socket server does not require client authentication, we can create a SSL socket client with the default SSL socket factory. Here is my sample program,
+ SslSocketServer.java, which can be used to communicate with SslReverseEchoer.java:
+ */
+
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.Scanner;
+import javax.net.ssl.*;
 
-public class EchoServer1 {
+public class SslSocketServer {
+
     //defining codes
     public static final String login = "200";
     public static final String logout = "204";
@@ -14,40 +24,59 @@ public class EchoServer1 {
     static File userDirectory;
     private static boolean isCreated = false;
 
-    public static void main(String[] args) {
+    final static String pathToStores = "C:\\Users\\Gavin Everett\\Documents\\ClientServerApp-Java\\ftpserver\\src\\main\\java\\com\\gavineverett\\server\\SecureLineInformation"; // The Directory
+    final static String keyStoreFile = "herong.jks"; // The FileName
+    final static String passwd = "gavin1234"; // The Password
 
-        //creating a directory to store users
-        userDirectory = new File("C:\\ServerSession");
-        //check if directory does not exist.
-        if (!userDirectory.exists()) {
-            userDirectory.mkdir();
-        }
+    /*
+     * Which Port to Listen SSL Connections
+     */
+    final static int theServerPort = 8888;
 
+    /*
+     * Turn on SSL debugging?
+     */
+    static boolean debug = false;
 
-        int serverPort = 7;    // default port
-        if (args.length == 1)
-            serverPort = Integer.parseInt(args[0]);
+    void doServerSide() throws Exception {
+        SSLServerSocketFactory sslssf = (SSLServerSocketFactory) SSLServerSocketFactory
+                .getDefault();
+        SSLServerSocket sslServerSocket = (SSLServerSocket) sslssf
+                .createServerSocket(theServerPort);
         try {
-            // instantiates a datagram socket for both sending
-            // and receiving data
-            MyServerDatagramSocket mySocket = new MyServerDatagramSocket(serverPort);
-            System.out.println("Client-Server Application ready!");
+
+            MyServerDatagramSocket mySocket = new MyServerDatagramSocket(8888);
+            System.out.println("Client-Server Application ready! Secured by SSL.");
             while (true) {  // forever loop
+
+                // SSLSocket sslSocket = (SSLSocket) sslServerSocket.accept();
+
+
                 DatagramMessage request =
                         mySocket.receiveMessageAndSender();
-                System.out.println("Request received");
+
                 String message = request.getMessage();
-                System.out.println("message received: " + message);
+
+
+                System.out.println("Request Received!");
+
+
+                //For Writing Back to the Client
+                //  OutputStream sslOS = sslSocket.getOutputStream();
+
+                //Read from the Client
+                // BufferedReader bufferedreader = new BufferedReader(new InputStreamReader(sslIS));
+
 
                 //when the message is retrieved the client will send back a code followed by the request of login.
                 String code = message;
+                System.out.println(code);
 
                 //splitting datagram message into components to access data.
                 String[] credentials = code.split("-");
                 String typeRequest = credentials[0];
                 String username = credentials[1];
                 String password = credentials[2];
-
 
                 //create a switch statement to decipher between the codes chosen.
                 switch (typeRequest) {
@@ -75,14 +104,14 @@ public class EchoServer1 {
                     case fileUpload:
                         //fileupload
                         //Receive the message data from the client.
-                        byte[] request1 =  mySocket.recieveFile();
+                        byte[] request1 = mySocket.recieveFile();
                         //remove whitespace from file coming onto server.
                         String filetoUpload = credentials[2].trim();
                         System.out.println(filetoUpload);
                         System.out.println("File received");
                         System.out.println("Performing upload operation");
-                        //convert byte array and upload to local directory
-                        String uploadFile =  performUploadOperation(request1, filetoUpload);
+                        // convert byte array and upload to local directory
+                        String uploadFile = performUploadOperation(request1, filetoUpload);
                         //send response back to the client.
                         mySocket.sendMessage(request.getAddress(),
                                 request.getPort(), uploadFile);
@@ -95,22 +124,23 @@ public class EchoServer1 {
                         System.out.println("Download Request received: " + filenameRecieved);
                         String downloadFile = performDownloadOperation(filenameRecieved);
                         //send file to the client for downloading
-                        mySocket.sendMessage(request.getAddress(),request.getPort(),
-                                 downloadFile);
+                        mySocket.sendMessage(request.getAddress(), request.getPort(),
+                                downloadFile);
                         break;
 
 
                 }
 
-            } //end while
-        } // end try
-        catch (Exception ex) {
+
+            }
+
+
+        } catch (Exception ex) {
             ex.printStackTrace();
         } // end catch
-    } //end main
+    }
 
 
-    //methods to perform actions.
 
     public static String performLoginOperation(String username, String password) {
         try {
@@ -184,9 +214,9 @@ public class EchoServer1 {
             userDirectory.mkdir();
         }
 
-            //create new file in the directory.
-            File crreate = new File(userDirectory + "\\" +  filename);
-            if(!crreate.exists())
+        //create new file in the directory.
+        File crreate = new File(userDirectory + "\\" +  filename);
+        if(!crreate.exists())
             crreate.createNewFile();
 
         //check if file exists before writing byte array to the file.
@@ -198,7 +228,7 @@ public class EchoServer1 {
                 System.out.println("Success wrote to file");
             }
         }
-            // Return string with response 600 and name of file uploaded.
+        // Return string with response 600 and name of file uploaded.
         String sucess = "302 - The file: " + crreate.getName() +   " has been successfully uploaded!";
         return sucess;
     }
@@ -242,7 +272,27 @@ public class EchoServer1 {
         }
     }
 
+    public static void main(String[] args) throws Exception {
+
+
+        //creating a directory to store users
+        userDirectory = new File("C:\\ServerSession");
+        //check if directory does not exist.
+        if (!userDirectory.exists()) {
+            userDirectory.mkdir();
+        }
+
+        String trustFilename = pathToStores + "\\" + keyStoreFile;
+
+        System.setProperty("javax.net.ssl.keyStore", trustFilename);
+        System.setProperty("javax.net.ssl.keyStorePassword", passwd);
+        if (debug)
+            System.setProperty("javax.net.debug", "all");
+
+        // java -Djavax.net.ssl.keyStore=/tmp/trustFilename
+        // -Djavax.net.ssl.keyStorePassword=123456 SSLServerExample
+        new SslSocketServer().doServerSide();
+
+    }
 
 }
-
-    // end class

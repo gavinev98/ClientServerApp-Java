@@ -3,13 +3,14 @@ package com.gavineverett.ftpclient;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.*;
 import java.net.InetAddress;
 import java.net.SocketException;
 import java.net.UnknownHostException;
+import javax.net.ssl.SSLServerSocket;
+import javax.net.ssl.SSLServerSocketFactory;
+import javax.net.ssl.SSLSocket;
 import javax.swing.*;
-import java.io.File;
 
 public class EchoClientHelper1 {
     private MyClientDatagramSocket mySocket;
@@ -21,15 +22,16 @@ public class EchoClientHelper1 {
     private static boolean notComplete = false;
 
     private final static int MAX_PACKET_SIZE = 64;
-
+    final static int theServerPort = 8888;
     EchoClientHelper1(String hostName, String portNum)
-            throws SocketException, UnknownHostException {
+            throws SocketException, UnknownHostException, Exception {
         this.serverHost = InetAddress.getByName(hostName);
         this.serverPort = Integer.parseInt(portNum);
         // instantiates a datagram socket for both sending
         // and receiving data
         this.mySocket = new MyClientDatagramSocket();
     }
+
         //testfdff
     public String getEcho( String message)
             throws SocketException, IOException {
@@ -39,6 +41,8 @@ public class EchoClientHelper1 {
         echo = mySocket.receiveMessage();
         return echo;
     } //end getEcho
+
+
 
 
     //create methods to recieve response from the server.
@@ -125,8 +129,6 @@ public class EchoClientHelper1 {
                 }
 
             }
-
-
                 /* https://stackoverflow.com/questions/8402889/working-with-jfilechooser-getting-access-to-the-selected-file */
                 final JFrame frame = new JFrame("Client-Server");
                     JButton btnFile = new JButton("Upload a File");
@@ -136,7 +138,6 @@ public class EchoClientHelper1 {
                 frame.setLocationRelativeTo(null);
                 frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
                 frame.setVisible(true);
-
 
                 btnFile.addActionListener(new ActionListener() {
                     //Handle open button action.
