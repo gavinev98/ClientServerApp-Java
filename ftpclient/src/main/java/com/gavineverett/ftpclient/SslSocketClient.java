@@ -102,6 +102,11 @@ public class SslSocketClient {
                         File file = helper.fileupload();
                         // retrieve name and extension from file.
                         filename = file.getName();
+
+                        if(filename.length() == 0)
+                        {
+                            System.out.println("No File Received");
+                        }
                         System.out.println("Sending file to server(please wait) : " + filename);
                         //send the file to the server
                         String msg =  helper.sendToServer(file, filename);
@@ -189,8 +194,4 @@ public class SslSocketClient {
 
 
 
-}/*Obviously, there is a problem. The TCP/IP layer connection was ok, but the SSL handshake process failed. The error message says that server certificate received has no valid path from any existing certificate authority.
-
-This is an expected error, because the server certificate is a self-signed certificate, not signed by any trusted certificate authorities directly or indirectly. See the next section on how to resolve this problem.
-*/
-/*Need to make self signed certificate trusted */
+}

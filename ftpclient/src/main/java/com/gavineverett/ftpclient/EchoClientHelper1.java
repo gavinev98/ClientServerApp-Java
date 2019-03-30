@@ -116,61 +116,63 @@ public class EchoClientHelper1 {
             if (!userDirectory.exists()) {
                 userDirectory.mkdir();
                 String filetemp = "Upload" + ".txt";
-                    File crreate = new File("C:\\Client", filetemp);
-                    try {
-                        crreate.createNewFile();
+                File crreate = new File("C:\\Client", filetemp);
+                try {
+                    crreate.createNewFile();
 
-                        PrintWriter writer = new PrintWriter(crreate, "UTF-8");
-                        writer.println("The first line");
-                        writer.println("The second line");
-                        writer.close();
-                    } catch (IOException e) {
+                    PrintWriter writer = new PrintWriter(crreate, "UTF-8");
+                    writer.println("The first line");
+                    writer.println("The second line");
+                    writer.close();
+                } catch (IOException e) {
                     e.printStackTrace();
                 }
 
             }
-                /* https://stackoverflow.com/questions/8402889/working-with-jfilechooser-getting-access-to-the-selected-file */
-                final JFrame frame = new JFrame("Client-Server");
-                    JButton btnFile = new JButton("Upload a File");
-                    while (!notComplete) {
-                        frame.getContentPane().add(btnFile);
-                frame.setSize(500, 500);
-                frame.setLocationRelativeTo(null);
-                frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-                frame.setVisible(true);
+            /* https://stackoverflow.com/questions/8402889/working-with-jfilechooser-getting-access-to-the-selected-file */
+            final JFrame frame = new JFrame("Client-Server");
 
-                btnFile.addActionListener(new ActionListener() {
-                    //Handle open button action.
-                    public void actionPerformed(ActionEvent e) {
-                        final JFileChooser fc = new JFileChooser();
-                        //set directory to the current directory.
-                        fc.setCurrentDirectory(userDirectory);
-                        int returnVal = fc.showOpenDialog(frame);
-                        if (returnVal == JFileChooser.APPROVE_OPTION) {
-                            file = fc.getSelectedFile();
-                            //check the the file size.
-                            long file_size = file.length();
-                            //check if file size is greater than 64kbs.
-                            if (file_size > MAX_PACKET_SIZE) {
-                                System.out.println(" 308 - The file selected exceeds 64kbs! Please select another file.");
-                            } else {
-                                //This is where a real application would open the file.
-                                System.out.println("File to be uploaded : " + file.getName() + ".");
-                                notComplete = true;
+            frame.setSize(500, 500);
+            frame.setLocationRelativeTo(null);
+            frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+            frame.setVisible(true);
 
-                            }
 
-                        }
+            while (!notComplete) {
+
+                //Handle open button action.
+                final JFileChooser fc = new JFileChooser();
+                //set directory to the current directory.
+                fc.setCurrentDirectory(userDirectory);
+                int returnVal = fc.showOpenDialog(frame);
+                if (returnVal == JFileChooser.APPROVE_OPTION) {
+                    file = fc.getSelectedFile();
+                    //check the the file size.
+                    long file_size = file.length();
+                    //check if file size is greater than 64kbs.
+                    if (file_size > MAX_PACKET_SIZE) {
+                        System.out.println(" 308 - The file selected exceeds 64kbs! Please select another file.");
+                    } else {
+                        //This is where a real application would open the file.
+                        System.out.println("File to be uploaded : " + file.getName() + ".");
+                        frame.dispose();
+                        return file;
 
                     }
+                }
+                // choose cancel option to close out of dialog.
+                if (returnVal == JFileChooser.CANCEL_OPTION) {
+                    //hide the jfilechooser
+                    System.out.println("Please Select a file.");
 
-                });
-
-
+                }
 
             }
-            return file;
+            return null;
         }
+
+
+
 
 
     public void filedownload()

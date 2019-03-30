@@ -46,6 +46,8 @@ public class SslSocketServer {
         try {
 
             MyServerDatagramSocket mySocket = new MyServerDatagramSocket(8888);
+
+
             System.out.println("Client-Server Application ready! Secured by SSL.");
             while (true) {  // forever loop
 
