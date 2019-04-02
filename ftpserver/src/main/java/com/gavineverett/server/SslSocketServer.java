@@ -48,7 +48,7 @@ public class SslSocketServer {
             MyServerDatagramSocket mySocket = new MyServerDatagramSocket(8888);
 
 
-            System.out.println("Client-Server Application ready! Secured by SSL.");
+            System.out.println("Client-Server Application ready! Secured by TLS.");
             while (true) {  // forever loop
 
                 // SSLSocket sslSocket = (SSLSocket) sslServerSocket.accept();
@@ -148,14 +148,15 @@ public class SslSocketServer {
         try {
             //check for txt file
             final String usertxt = username;
-            final String filename = usertxt + ".txt";
-            final File file = new File("C:\\ServerSession", filename);
+            final String filename = usertxt;
+            final File file = new File("C:\\ServerSession\\", filename);
+            final File creds = new File("C:\\ServerSession\\", filename + "\\" + "creds.txt");
             //boolean variable if user exists
-            boolean userExists = file.exists();
+            boolean userExists = creds.exists();
             // check if user exists by checking file directory.
             if (userExists) {
                 //If users file is there then we check for password inside of file.
-                Scanner in = new Scanner(new FileReader(file));
+                Scanner in = new Scanner(new FileReader(creds));
                 StringBuilder sb = new StringBuilder();
                 while (in.hasNext()) {
                     sb.append(in.next());
@@ -173,10 +174,11 @@ public class SslSocketServer {
 
             } else {
                 //If user does not exist create a new file for the user and add to directory.
-                file.createNewFile();
+                file.mkdir();
+                creds.createNewFile();
                 String storeUserpass = password;
                 //write the new user password to the file.
-                PrintWriter writePass = new PrintWriter(file, "UTF-8");
+                PrintWriter writePass = new PrintWriter(creds, "UTF-8");
                 //write password to file.
                 writePass.println(storeUserpass);
                 writePass.close();

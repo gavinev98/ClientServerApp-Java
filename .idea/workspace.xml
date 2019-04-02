@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
+  <component name="BookmarkManager">
+    <bookmark url="file://$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/GUI.java" line="245" />
+  </component>
   <component name="ChangeListManager">
-    <list default="true" id="62476b67-4251-498d-8767-b63eddbacde9" name="Default Changelist" comment="Successfully implemented a secure connection line SLS.">
+    <list default="true" id="62476b67-4251-498d-8767-b63eddbacde9" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/EchoClientHelper1.java" beforeDir="false" afterPath="$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/EchoClientHelper1.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/SslSocketClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/SslSocketClient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ftpclient/target/classes/com/gavineverett/ftpclient/EchoClientHelper1.class" beforeDir="false" afterPath="$PROJECT_DIR$/ftpclient/target/classes/com/gavineverett/ftpclient/EchoClientHelper1.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/SslSocketServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/SslSocketServer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
@@ -125,50 +127,64 @@
     <session id="776484388">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
-          <entry key="project.open.time.1" value="2" />
+          <entry key="project.closed" value="4" />
+          <entry key="project.open.time.0" value="1" />
+          <entry key="project.open.time.1" value="3" />
           <entry key="project.open.time.17" value="1" />
           <entry key="project.open.time.20" value="1" />
           <entry key="project.open.time.29" value="1" />
           <entry key="project.open.time.33" value="1" />
-          <entry key="project.opened" value="6" />
+          <entry key="project.opened" value="8" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="5" />
+          <entry key="java" value="7" />
+          <entry key="puml" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="5" />
+          <entry key="JAVA" value="7" />
+          <entry key="PlantUML file" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="dummy" value="6" />
-          <entry key="java" value="1284" />
-          <entry key="txt" value="72" />
+          <entry key="dummy" value="17" />
+          <entry key="java" value="7284" />
+          <entry key="txt" value="125" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1284" />
-          <entry key="PLAIN_TEXT" value="78" />
+          <entry key="JAVA" value="7284" />
+          <entry key="PLAIN_TEXT" value="142" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/SslSocketClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="127">
-              <caret line="117" column="29" lean-forward="true" selection-start-line="117" selection-start-column="29" selection-end-line="117" selection-end-column="29" />
+            <state relative-caret-position="221">
+              <caret line="43" column="22" lean-forward="true" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
               <folding>
                 <element signature="imports" expanded="true" />
+                <element signature="e#7391#7392#0" expanded="true" />
+                <element signature="e#7418#7419#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/GUI.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="17" lean-forward="true" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
             </state>
           </provider>
         </entry>
@@ -176,8 +192,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/SslSocketServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="190">
-              <caret line="247" column="52" lean-forward="true" selection-start-line="247" selection-start-column="52" selection-end-line="247" selection-end-column="52" />
+            <state relative-caret-position="170">
+              <caret line="103" column="30" lean-forward="true" selection-start-line="103" selection-start-column="30" selection-end-line="103" selection-end-column="30" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -188,7 +204,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/MyServerDatagramSocket.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-146">
+            <state relative-caret-position="187">
               <caret line="11" selection-start-line="11" selection-end-line="11" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -200,7 +216,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/MyClientDatagramSocket.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="17">
+            <state relative-caret-position="194">
               <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -212,8 +228,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/EchoClientHelper1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="409">
-              <caret line="166" selection-start-line="166" selection-end-line="166" />
+            <state relative-caret-position="403">
+              <caret line="153" column="137" selection-start-line="153" selection-start-column="137" selection-end-line="153" selection-end-column="137" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -226,6 +242,7 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="UML Sequence" />
         <option value="Class" />
       </list>
     </option>
@@ -243,6 +260,9 @@
       <find>debug</find>
       <find>close</find>
       <find>notComplete</find>
+      <find>LoginGui</find>
+      <find>userNameVal</find>
+      <find>ssl</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -275,8 +295,10 @@
         <option value="$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/EchoServer1.java" />
         <option value="$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/SslSocketClient.java" />
         <option value="$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/SslSocketServer.java" />
-        <option value="$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/SslSocketClient.java" />
+        <option value="$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/LoginGui.java" />
         <option value="$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/EchoClientHelper1.java" />
+        <option value="$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/GUI.java" />
+        <option value="$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/SslSocketClient.java" />
       </list>
     </option>
   </component>
@@ -321,9 +343,8 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
-      <pane id="AndroidView" />
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -425,14 +446,16 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1553966371609" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554196258269" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -454,7 +477,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.SslSocketClient (1)">
+  <component name="RunManager">
     <configuration name="EchoClient1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.gavineverett.ftpclient.EchoClient1" />
       <module name="ftpclient" />
@@ -481,7 +504,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SslSocketClient (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+    <configuration name="GUI" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.gavineverett.ftpclient.GUI" />
+      <module name="ftpclient" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.gavineverett.ftpclient.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="SslSocketClient" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.gavineverett.ftpclient.SslSocketClient" />
       <module name="ftpclient" />
       <extension name="coverage">
@@ -507,33 +543,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.gavineverett.ftpclient.test" />
-      <module name="ftpclient" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gavineverett.ftpclient.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
+      <item itemvalue="Application.SslSocketClient" />
       <item itemvalue="Application.EchoServer1" />
       <item itemvalue="Application.EchoClient1" />
-      <item itemvalue="Application.test" />
       <item itemvalue="Application.SslSocketServer" />
-      <item itemvalue="Application.SslSocketClient (1)" />
+      <item itemvalue="Application.GUI" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.SslSocketClient (1)" />
+        <item itemvalue="Application.GUI" />
         <item itemvalue="Application.SslSocketServer" />
+        <item itemvalue="Application.SslSocketClient" />
         <item itemvalue="Application.EchoClient1" />
         <item itemvalue="Application.EchoServer1" />
-        <item itemvalue="Application.test" />
       </list>
     </recent_temporary>
   </component>
@@ -835,13 +858,30 @@
       <option name="project" value="LOCAL" />
       <updated>1553258718938</updated>
     </task>
-    <option name="localTasksCounter" value="42" />
+    <task id="LOCAL-00042" summary="Fixed validation for file upload jfilechooser">
+      <created>1553966399424</created>
+      <option name="number" value="00042" />
+      <option name="presentableId" value="LOCAL-00042" />
+      <option name="project" value="LOCAL" />
+      <updated>1553966399424</updated>
+    </task>
+    <option name="localTasksCounter" value="43" />
     <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17750533" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18070363" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -850,14 +890,14 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4978678" visible="true" weight="0.3383948" />
+      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.4978678" visible="true" weight="0.1681128" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3286334" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
-      <window_info anchor="bottom" id="TODO" order="6" />
-      <window_info anchor="bottom" id="Terminal" order="7" />
-      <window_info anchor="bottom" id="Event Log" order="8" sideWeight="0.5021322" side_tool="true" weight="0.31127983" />
-      <window_info anchor="bottom" id="Version Control" order="9" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="6" />
+      <window_info anchor="bottom" id="Event Log" order="7" sideWeight="0.5021322" side_tool="true" weight="0.31127983" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="TODO" order="9" weight="0.329718" />
       <window_info anchor="bottom" id="Messages" order="10" sideWeight="0.4978678" weight="0.329718" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
@@ -865,10 +905,10 @@
       <window_info anchor="right" id="Palette" order="3" />
       <window_info anchor="right" id="Capture Analysis" order="4" />
       <window_info anchor="right" id="Theme Preview" order="5" />
-      <window_info anchor="right" id="PlantUML" order="6" />
+      <window_info anchor="right" id="PlantUML" order="6" weight="0.32995737" />
       <window_info anchor="right" id="Palette&#9;" order="7" />
-      <window_info anchor="right" id="Maven Projects" order="8" weight="0.32995737" />
-      <window_info anchor="right" id="Coverage" order="9" side_tool="true" weight="0.32995737" />
+      <window_info anchor="right" id="Coverage" order="8" side_tool="true" weight="0.32995737" />
+      <window_info anchor="right" id="Maven Projects" order="9" weight="0.32995737" />
     </layout>
     <layout-to-restore>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.17750533" />
@@ -905,7 +945,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Creating method to send file over UDP." />
     <MESSAGE value="Applied try/catch to sending datagram." />
     <MESSAGE value="Receive file method created to receive file on server." />
     <MESSAGE value="Implementing upload of file functionality." />
@@ -930,7 +969,8 @@
     <MESSAGE value="data being received on the client." />
     <MESSAGE value="download feature implemented." />
     <MESSAGE value="Successfully implemented a secure connection line SLS." />
-    <option name="LAST_COMMIT_MESSAGE" value="Successfully implemented a secure connection line SLS." />
+    <MESSAGE value="Fixed validation for file upload jfilechooser" />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed validation for file upload jfilechooser" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/pom.xml">
@@ -1012,9 +1052,12 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/EchoClient1.java" />
+    <entry file="file://$PROJECT_DIR$/ftpclient/ftpclient.puml" />
+    <entry file="file://$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/ftpclient.puml" />
+    <entry file="file://$PROJECT_DIR$/ftpclient/src/main/java/Gui.java" />
     <entry file="file://$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/MyServerDatagramSocket.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-146">
+        <state relative-caret-position="187">
           <caret line="11" selection-start-line="11" selection-end-line="11" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1024,7 +1067,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/MyClientDatagramSocket.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="17">
+        <state relative-caret-position="194">
           <caret line="27" column="28" selection-start-line="27" selection-start-column="28" selection-end-line="27" selection-end-column="28" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -1034,18 +1077,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/EchoClientHelper1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="409">
-          <caret line="166" selection-start-line="166" selection-end-line="166" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/SslSocketServer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="190">
-          <caret line="247" column="52" lean-forward="true" selection-start-line="247" selection-start-column="52" selection-end-line="247" selection-end-column="52" />
+        <state relative-caret-position="403">
+          <caret line="153" column="137" selection-start-line="153" selection-start-column="137" selection-end-line="153" selection-end-column="137" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1054,11 +1087,30 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/SslSocketClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="127">
-          <caret line="117" column="29" lean-forward="true" selection-start-line="117" selection-start-column="29" selection-end-line="117" selection-end-column="29" />
+        <state relative-caret-position="221">
+          <caret line="43" column="22" lean-forward="true" selection-start-line="43" selection-start-column="22" selection-end-line="43" selection-end-column="22" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#7391#7392#0" expanded="true" />
+            <element signature="e#7418#7419#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/SslSocketServer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="170">
+          <caret line="103" column="30" lean-forward="true" selection-start-line="103" selection-start-column="30" selection-end-line="103" selection-end-column="30" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/GUI.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="17" lean-forward="true" selection-start-line="8" selection-start-column="17" selection-end-line="8" selection-end-column="17" />
         </state>
       </provider>
     </entry>

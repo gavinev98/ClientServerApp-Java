@@ -7,6 +7,11 @@ package com.gavineverett.ftpclient;
  Since my SSL socket server does not require client authentication, we can create a SSL socket client with the default SSL socket factory. Here is my sample program,
  SslSocketClient.java, which can be used to communicate with SslReverseEchoer.java:
  */
+import sun.rmi.runtime.Log;
+
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.OutputStream;
 
 import javax.net.ssl.SSLSocket;
@@ -14,6 +19,8 @@ import javax.net.ssl.SSLSocketFactory;
 import java.io.*;
 import java.net.*;
 import javax.net.ssl.*;
+import javax.swing.*;
+
 public class SslSocketClient {
 
     final static String pathToStores = "C:\\Users\\Gavin Everett\\Documents\\ClientServerApp-Java\\ftpclient\\src\\main\\java\\com\\gavineverett\\ftpclient\\SecureLineInformation"; // The Directory
@@ -22,6 +29,9 @@ public class SslSocketClient {
     static boolean userSession;
     static String filename = "";
     static  String closeapp = "";
+    static String status = "";
+
+
 
     static boolean debug = false;
 
@@ -46,6 +56,7 @@ public class SslSocketClient {
             System.out.println("\nHello and welcome to the system");
 
 
+
             System.out.print("Please enter a username of your choice: ");
             String userNameVal = reading.readLine();
             System.out.println("Please enter your password");
@@ -53,6 +64,7 @@ public class SslSocketClient {
 
 
             String status = helper.login(userNameVal, passwordVal);
+
 
             System.out.println(status);
 
@@ -132,7 +144,7 @@ public class SslSocketClient {
                             System.out.println("Thank you: " + fileChosen + " is now being processed");
 
                             //create a file in the client directory with the name the user has requested
-                            File createFile = new File("C:\\Client\\",fileChosen);
+                            File createFile = new File("C:\\ServerSession\\", userNameVal + "\\" + fileChosen);
                             if(!createFile.exists())
                                 createFile.createNewFile();
                             //receive information back from the server which should include the content of the file.
@@ -174,6 +186,11 @@ public class SslSocketClient {
 
 
         }
+    }
+
+    public String data(String data)
+    {
+        return data;
     }
 
 
