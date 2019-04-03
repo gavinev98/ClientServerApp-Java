@@ -11,6 +11,7 @@ package com.gavineverett.server;
 import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.security.KeyStore;
 import java.util.Scanner;
 import javax.net.ssl.*;
 
@@ -24,8 +25,9 @@ public class SslSocketServer {
     static File userDirectory;
     private static boolean isCreated = false;
 
-    final static String pathToStores = "C:\\Users\\Gavin Everett\\Documents\\ClientServerApp-Java\\ftpserver\\src\\main\\java\\com\\gavineverett\\server\\SecureLineInformation"; // The Directory
+
     final static String keyStoreFile = "herong.jks"; // The FileName
+    final static String trustFile = "public.jks"; // The FileName
     final static String passwd = "gavin1234"; // The Password
 
     /*
@@ -36,19 +38,42 @@ public class SslSocketServer {
     /*
      * Turn on SSL debugging?
      */
-    static boolean debug = false;
+   static boolean debug = false;
 
     void doServerSide() throws Exception {
-        SSLServerSocketFactory sslssf = (SSLServerSocketFactory) SSLServerSocketFactory
-                .getDefault();
-        SSLServerSocket sslServerSocket = (SSLServerSocket) sslssf
-                .createServerSocket(theServerPort);
+
+        KeyStore ks = KeyStore.getInstance("JKS");
+
+
+        char[] passphrase = passwd.toCharArray();
+
+        try (FileInputStream fis = new FileInputStream(keyStoreFile)) {
+            ks.load(fis, passphrase);
+        }
+
+        KeyManagerFactory kmf = KeyManagerFactory.getInstance("SunX509");
+        kmf.init(ks, passphrase);
+
+        TrustManagerFactory tmf = TrustManagerFactory.getInstance("SunX509");
+        tmf.init(ks);
+
+        SSLContext sslCtx = SSLContext.getInstance("DTLS");
+
+        sslCtx.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);
+
+        SSLEngine engine = sslCtx.createSSLEngine("localhost", theServerPort);
+        engine.setUseClientMode(false);
+
+
+
+
+
         try {
 
             MyServerDatagramSocket mySocket = new MyServerDatagramSocket(8888);
 
 
-            System.out.println("Client-Server Application ready! Secured by TLS.");
+            System.out.println("Client-Server Application ready! Secured by DTLS.");
             while (true) {  // forever loop
 
                 // SSLSocket sslSocket = (SSLSocket) sslServerSocket.accept();
@@ -61,7 +86,7 @@ public class SslSocketServer {
 
 
                 System.out.println("Request Received!");
-
+                System.out.println(engine.getSession());
 
                 //For Writing Back to the Client
                 //  OutputStream sslOS = sslSocket.getOutputStream();
@@ -286,12 +311,11 @@ public class SslSocketServer {
             userDirectory.mkdir();
         }
 
-        String trustFilename = pathToStores + "\\" + keyStoreFile;
 
-        System.setProperty("javax.net.ssl.keyStore", trustFilename);
+        System.setProperty("javax.net.ssl.keyStore", keyStoreFile);
         System.setProperty("javax.net.ssl.keyStorePassword", passwd);
-        if (debug)
-            System.setProperty("javax.net.debug", "all");
+       // if (debug)
+           // System.setProperty("javax.net.debug", "all");
 
         // java -Djavax.net.ssl.keyStore=/tmp/trustFilename
         // -Djavax.net.ssl.keyStorePassword=123456 SSLServerExample

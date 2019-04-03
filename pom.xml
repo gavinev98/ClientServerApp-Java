@@ -12,6 +12,7 @@
         <module>ftpclient</module>
         <module>ftpserver</module>
         <module>ftpapp</module>
+        <module>ftpextras</module>
     </modules>
     <dependencies>
         <dependency>
