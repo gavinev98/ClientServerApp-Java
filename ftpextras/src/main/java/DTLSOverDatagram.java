@@ -1,37 +1,28 @@
+// SunJSSE does not support dynamic system properties, no way to re-use
+// system properties in samevm/agentvm mode.
+
+/*
+ * @test
+ * @bug 8043758
+ * @summary Datagram Transport Layer Security (DTLS)
+ * @modules java.base/sun.security.util
+ * @run main/othervm com.gavineverett.server.DTLSOverDatagram
+ */
+
 import java.io.*;
 import java.nio.*;
 import java.net.*;
 import java.util.*;
 import java.security.*;
-import java.security.cert.*;
 import javax.net.ssl.*;
 import java.util.concurrent.*;
 
-import java.io.*;
-import java.nio.*;
-import java.net.*;
-import java.util.*;
-import java.security.*;
-import java.util.concurrent.Callable;
-import java.util.concurrent.CancellationException;
-import java.util.concurrent.ExecutionException;
-import java.util.concurrent.ExecutorService;
-import java.util.concurrent.Executors;
-import java.util.concurrent.Future;
-import javax.net.ssl.*;
-
-
-import sun.security.util.HexDumpEncoder;
 
 
 /**
  * An example to show the way to use SSLEngine in datagram connections.
  */
 public class DTLSOverDatagram {
-
-    static {
-        System.setProperty("javax.net.debug", "ssl");
-    }
 
     private static int MAX_HANDSHAKE_LOOPS = 200;
     private static int MAX_APP_READ_LOOPS = 60;
@@ -42,14 +33,17 @@ public class DTLSOverDatagram {
     /*
      * The following is to set up the keystores.
      */
+    private static String pathToStores = "../etc";
     private static String keyStoreFile = "herong.jks";
     private static String trustStoreFile = "public.jks";
-    private static String passwd = "gavin1234";
+    private static String passwd = "passphrase";
 
     private static String keyFilename =
-            System.getProperty("test.src", ".") + "/" + keyStoreFile;
+            System.getProperty("test.src", ".") + "/" + pathToStores +
+                    "/" + keyStoreFile;
     private static String trustFilename =
-            System.getProperty("test.src", ".") + "/" + trustStoreFile;
+            System.getProperty("test.src", ".") + "/" + pathToStores +
+                    "/" + trustStoreFile;
     private static Exception clientException = null;
     private static Exception serverException = null;
 
@@ -138,6 +132,7 @@ public class DTLSOverDatagram {
             }
 
             SSLEngineResult.HandshakeStatus hs = engine.getHandshakeStatus();
+            log(side, "=======handshake(" + loops + ", " + hs + ")=======");
             if (hs == SSLEngineResult.HandshakeStatus.NEED_UNWRAP ||
                     hs == SSLEngineResult.HandshakeStatus.NEED_UNWRAP_AGAIN) {
 
@@ -157,7 +152,9 @@ public class DTLSOverDatagram {
                         boolean finished = onReceiveTimeout(
                                 engine, peerAddr, side, packets);
 
+                        log(side, "Reproduced " + packets.size() + " packets");
                         for (DatagramPacket p : packets) {
+
                             socket.send(p);
                         }
 
@@ -217,6 +214,7 @@ public class DTLSOverDatagram {
                 boolean finished = produceHandshakePackets(
                         engine, peerAddr, side, packets);
 
+                log(side, "Produced " + packets.size() + " packets");
                 for (DatagramPacket p : packets) {
                     socket.send(p);
                 }
@@ -230,14 +228,16 @@ public class DTLSOverDatagram {
             } else if (hs == SSLEngineResult.HandshakeStatus.NEED_TASK) {
                 runDelegatedTasks(engine);
             } else if (hs == SSLEngineResult.HandshakeStatus.NOT_HANDSHAKING) {
-                log(side, "Handshake status is NOT_HANDSHAKING, finish the loop");
+                log(side,
+                        "Handshake status is NOT_HANDSHAKING, finish the loop");
                 endLoops = true;
             } else if (hs == SSLEngineResult.HandshakeStatus.FINISHED) {
                 throw new Exception(
                         "Unexpected status, SSLEngine.getHandshakeStatus() "
                                 + "shouldn't return FINISHED");
             } else {
-                throw new Exception("Can't reach here, handshake status is " + hs);
+                throw new Exception(
+                        "Can't reach here, handshake status is " + hs);
             }
         }
 
@@ -257,7 +257,9 @@ public class DTLSOverDatagram {
         log(side, "Negotiated cipher suite is " + session.getCipherSuite());
 
         // handshake status should be NOT_HANDSHAKING
-        // according to the spec, SSLEngine.getHandshakeStatus() can't return FINISHED
+        //
+        // According to the spec, SSLEngine.getHandshakeStatus() can't
+        // return FINISHED.
         if (hs != SSLEngineResult.HandshakeStatus.NOT_HANDSHAKING) {
             throw new Exception("Unexpected handshake status " + hs);
         }
@@ -295,7 +297,7 @@ public class DTLSOverDatagram {
             SSLEngineResult rs = engine.unwrap(netBuffer, recBuffer);
             recBuffer.flip();
             if (recBuffer.remaining() != 0) {
-                printHex("Received application data", recBuffer);
+
                 if (!recBuffer.equals(expectedApp)) {
                     System.out.println("Engine status is " + rs);
                     throw new Exception("Not the right application data");
@@ -310,7 +312,7 @@ public class DTLSOverDatagram {
                                     String side, List<DatagramPacket> packets) throws Exception {
 
         boolean endLoops = false;
-        int loops = MAX_HANDSHAKE_LOOPS;
+        int loops = MAX_HANDSHAKE_LOOPS / 2;
         while (!endLoops &&
                 (serverException == null) && (clientException == null)) {
 
@@ -326,13 +328,17 @@ public class DTLSOverDatagram {
 
             SSLEngineResult.Status rs = r.getStatus();
             SSLEngineResult.HandshakeStatus hs = r.getHandshakeStatus();
+            log(side, "----produce handshake packet(" +
+                    loops + ", " + rs + ", " + hs + ")----");
             if (rs == SSLEngineResult.Status.BUFFER_OVERFLOW) {
                 // the client maximum fragment size config does not work?
                 throw new Exception("Buffer overflow: " +
                         "incorrect server maximum fragment size");
             } else if (rs == SSLEngineResult.Status.BUFFER_UNDERFLOW) {
-                log(side, "Produce handshake packets: BUFFER_UNDERFLOW occured");
-                log(side, "Produce handshake packets: Handshake status: " + hs);
+                log(side,
+                        "Produce handshake packets: BUFFER_UNDERFLOW occured");
+                log(side,
+                        "Produce handshake packets: Handshake status: " + hs);
                 // bad packet, or the client maximum fragment size
                 // config does not work?
                 if (hs != SSLEngineResult.HandshakeStatus.NOT_HANDSHAKING) {
@@ -431,6 +437,53 @@ public class DTLSOverDatagram {
         return packets;
     }
 
+    // Get a datagram packet for the specified handshake type.
+    static DatagramPacket getPacket(
+            List<DatagramPacket> packets, byte handshakeType) {
+        boolean matched = false;
+        for (DatagramPacket packet : packets) {
+            byte[] data = packet.getData();
+            int offset = packet.getOffset();
+            int length = packet.getLength();
+
+            // Normally, this pakcet should be a handshake message
+            // record.  However, even if the underlying platform
+            // splits the record more, we don't really worry about
+            // the improper packet loss because DTLS implementation
+            // should be able to handle packet loss properly.
+            //
+            // See RFC 6347 for the detailed format of DTLS records.
+            if (handshakeType == -1) {      // ChangeCipherSpec
+                // Is it a ChangeCipherSpec message?
+                matched = (length == 14) && (data[offset] == 0x14);
+            } else if ((length >= 25) &&    // 25: handshake mini size
+                    (data[offset] == 0x16)) {   // a handshake message
+
+                // check epoch number for initial handshake only
+                if (data[offset + 3] == 0x00) {     // 3,4: epoch
+                    if (data[offset + 4] == 0x00) { // plaintext
+                        matched =
+                                (data[offset + 13] == handshakeType);
+                    } else {                        // cipherext
+                        // The 1st ciphertext is a Finished message.
+                        //
+                        // If it is not proposed to loss the Finished
+                        // message, it is not necessary to check the
+                        // following packets any mroe as a Finished
+                        // message is the last handshake message.
+                        matched = (handshakeType == 20);
+                    }
+                }
+            }
+
+            if (matched) {
+                return packet;
+            }
+        }
+
+        return null;
+    }
+
     // run delegated tasks
     void runDelegatedTasks(SSLEngine engine) throws Exception {
         Runnable runnable;
@@ -462,13 +515,13 @@ public class DTLSOverDatagram {
         KeyStore ks = KeyStore.getInstance("JKS");
         KeyStore ts = KeyStore.getInstance("JKS");
 
-        char[] passphrase = passwd.toCharArray();
+        char[] passphrase = "passphrase".toCharArray();
 
-        try (FileInputStream fis = new FileInputStream(keyFilename)) {
+        try (FileInputStream fis = new FileInputStream(keyStoreFile)) {
             ks.load(fis, passphrase);
         }
 
-        try (FileInputStream fis = new FileInputStream(trustFilename)) {
+        try (FileInputStream fis = new FileInputStream(trustStoreFile)) {
             ts.load(fis, passphrase);
         }
 
@@ -625,36 +678,7 @@ public class DTLSOverDatagram {
         }
     }
 
-    final static void printHex(String prefix, ByteBuffer bb) {
-        HexDumpEncoder dump = new HexDumpEncoder();
 
-        synchronized (System.out) {
-            System.out.println(prefix);
-            try {
-                dump.encodeBuffer(bb.slice(), System.out);
-            } catch (Exception e) {
-                // ignore
-            }
-            System.out.flush();
-        }
-    }
-
-    final static void printHex(String prefix,
-                               byte[] bytes, int offset, int length) {
-
-        HexDumpEncoder dump = new HexDumpEncoder();
-
-        synchronized (System.out) {
-            System.out.println(prefix);
-            try {
-                ByteBuffer bb = ByteBuffer.wrap(bytes, offset, length);
-                dump.encodeBuffer(bb, System.out);
-            } catch (Exception e) {
-                // ignore
-            }
-            System.out.flush();
-        }
-    }
 
     static void log(String side, String message) {
         System.out.println(side + ": " + message);

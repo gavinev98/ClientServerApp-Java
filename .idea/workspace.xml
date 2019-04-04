@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="BookmarkManager">
-    <bookmark url="file://$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/DTLSClient.java" line="314" />
+    <bookmark url="file://$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/DTLSClient.java" line="316" />
   </component>
   <component name="ChangeListManager">
     <list default="true" id="62476b67-4251-498d-8767-b63eddbacde9" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/GUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/DTLSClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/DTLSClient.java" beforeDir="false" afterPath="$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/DTLSClient.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ftpclient/target/classes/com/gavineverett/ftpclient/EchoClientHelper1.class" beforeDir="false" afterPath="$PROJECT_DIR$/ftpclient/target/classes/com/gavineverett/ftpclient/EchoClientHelper1.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ftpclient/target/classes/com/gavineverett/ftpclient/MyClientDatagramSocket.class" beforeDir="false" afterPath="$PROJECT_DIR$/ftpclient/target/classes/com/gavineverett/ftpclient/MyClientDatagramSocket.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ftpextras/src/main/java/DTLSOverDatagram.java" beforeDir="false" afterPath="$PROJECT_DIR$/ftpextras/src/main/java/DTLSOverDatagram.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/SslSocketServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/DTLSServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/DTLSServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/DTLSServer.java" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -190,14 +193,14 @@
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="25" />
-          <entry key="java" value="1286" />
-          <entry key="txt" value="23" />
+          <entry key="java" value="1344" />
+          <entry key="txt" value="71" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="1286" />
-          <entry key="PLAIN_TEXT" value="48" />
+          <entry key="JAVA" value="1344" />
+          <entry key="PLAIN_TEXT" value="96" />
         </counts>
       </usages-collector>
     </session>
@@ -207,8 +210,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/DTLSClient.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="146">
-              <caret line="227" column="22" lean-forward="true" selection-start-line="227" selection-start-column="22" selection-end-line="227" selection-end-column="22" />
+            <state relative-caret-position="197">
+              <caret line="182" column="75" selection-start-line="182" selection-start-column="75" selection-end-line="182" selection-end-column="75" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -219,10 +222,15 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ftpextras/src/main/java/DTLSOverDatagram.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-589">
-              <caret line="51" column="71" selection-start-line="51" selection-start-column="71" selection-end-line="51" selection-end-column="71" />
+            <state relative-caret-position="179">
+              <caret line="110" column="13" selection-start-line="110" selection-start-column="13" selection-end-line="110" selection-end-column="13" />
               <folding>
+                <element signature="e#0#26279#0" expanded="true" />
                 <element signature="imports" expanded="true" />
+                <element signature="e#22971#22972#0" expanded="true" />
+                <element signature="e#22998#22999#0" expanded="true" />
+                <element signature="e#28427#28428#0" expanded="true" />
+                <element signature="e#28484#28485#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -231,8 +239,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/DTLSServer.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="94">
-              <caret line="118" column="31" lean-forward="true" selection-start-line="118" selection-start-column="31" selection-end-line="118" selection-end-column="31" />
+            <state relative-caret-position="14">
+              <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -267,8 +275,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/EchoClientHelper1.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="2448">
-              <caret line="153" column="137" selection-start-line="153" selection-start-column="137" selection-end-line="153" selection-end-column="137" />
+            <state relative-caret-position="402">
+              <caret line="31" column="50" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="50" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -314,6 +322,8 @@
       <find>red</find>
       <find>keystore</find>
       <find>frame</find>
+      <find>keyFilename</find>
+      <find>trustFilename</find>
       <find>txtarea</find>
       <find>doServerSide</find>
     </findStrings>
@@ -349,10 +359,10 @@
         <option value="$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/SslSocketClient.java" />
         <option value="$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/LoginGui.java" />
         <option value="$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/EchoClientHelper1.java" />
-        <option value="$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/DTLSOverDatagram.java" />
         <option value="$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/SslSocketClient.java" />
         <option value="$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/SslSocketServer.java" />
         <option value="$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/GUI.java" />
+        <option value="$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/DTLSOverDatagram.java" />
         <option value="$PROJECT_DIR$/ftpextras/src/main/java/DTLSOverDatagram.java" />
         <option value="$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/DTLSServer.java" />
         <option value="$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/DTLSClient.java" />
@@ -513,20 +523,20 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554391920963" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1554395206248" />
     <property name="last_opened_file_path" value="$USER_HOME$/Desktop/DistributedComputing" />
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
+    <property name="settings.editor.selected.configurable" value="reference.projectsettings.compiler.javacompiler" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Gavin Everett\Pictures\ClientServerApp-Java\ftpextras\src\main\java" />
+      <recent name="C:\Users\Gavin Everett\Pictures\ClientServerApp-Java\ftpextras" />
       <recent name="C:\Users\Gavin Everett\Pictures\ClientServerApp-Java" />
       <recent name="C:\Users\Gavin Everett\Pictures\ClientServerApp-Java\ftpserver" />
       <recent name="C:\Users\Gavin Everett\Documents\ClientServerApp-Java\ftpserver\src\main\java\com\gavineverett\server\SecureLineInformation" />
-      <recent name="C:\Users\Gavin Everett\Documents\ClientServerApp-Java\ftpclient\src\main\java\com\gavineverett\ftpclient\SecureLineInformation" />
-      <recent name="C:\Users\Gavin Everett\Documents\ClientServerApp-Java\ftpclient\src\main\java\com\gavineverett\ftpclient" />
     </key>
   </component>
   <component name="RunDashboard">
@@ -555,6 +565,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <configuration name="DTLSOverDatagram (1)" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="DTLSOverDatagram" />
+      <module name="ftpextras" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DTLSOverDatagram" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.gavineverett.server.DTLSOverDatagram" />
+      <module name="ftpserver" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="DTLSOverDatagram" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.gavineverett.server.DTLSOverDatagram" />
       <module name="ftpserver" />
@@ -568,19 +592,6 @@
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.gavineverett.server.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
-    <configuration name="EchoClient1" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.gavineverett.ftpclient.EchoClient1" />
-      <module name="ftpclient" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="com.gavineverett.ftpclient.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -603,18 +614,18 @@
     </configuration>
     <list>
       <item itemvalue="Application.SslSocketClient" />
-      <item itemvalue="Application.EchoClient1" />
       <item itemvalue="Application.DTLSServer" />
       <item itemvalue="Application.DTLSClient" />
       <item itemvalue="Application.DTLSOverDatagram" />
+      <item itemvalue="Application.DTLSOverDatagram (1)" />
     </list>
     <recent_temporary>
       <list>
         <item itemvalue="Application.DTLSClient" />
         <item itemvalue="Application.DTLSServer" />
-        <item itemvalue="Application.SslSocketClient" />
+        <item itemvalue="Application.DTLSOverDatagram (1)" />
         <item itemvalue="Application.DTLSOverDatagram" />
-        <item itemvalue="Application.EchoClient1" />
+        <item itemvalue="Application.DTLSOverDatagram (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -944,7 +955,14 @@
       <option name="project" value="LOCAL" />
       <updated>1554326107218</updated>
     </task>
-    <option name="localTasksCounter" value="46" />
+    <task id="LOCAL-00046" summary="Added in extra gui features fix dtls connection.">
+      <created>1554391966407</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1554391966407</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="TodoView">
@@ -969,7 +987,7 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.329718" />
-      <window_info active="true" anchor="bottom" id="Run" order="2" sideWeight="0.49733475" visible="true" weight="0.3275488" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.49733475" weight="0.6334056" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.3286334" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -1024,7 +1042,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="Implementing upload of file functionality." />
     <MESSAGE value="Sending file to server." />
     <MESSAGE value="updated messages." />
     <MESSAGE value="Editing server to upload file." />
@@ -1049,7 +1066,8 @@
     <MESSAGE value="Fixed validation for file upload jfilechooser" />
     <MESSAGE value="Added in a GUI." />
     <MESSAGE value="DTLS/ GUI implemented" />
-    <option name="LAST_COMMIT_MESSAGE" value="DTLS/ GUI implemented" />
+    <MESSAGE value="Added in extra gui features fix dtls connection." />
+    <option name="LAST_COMMIT_MESSAGE" value="Added in extra gui features fix dtls connection." />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/ftpclient/src/main/java/Application.java" />
@@ -1160,8 +1178,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/EchoClientHelper1.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2448">
-          <caret line="153" column="137" selection-start-line="153" selection-start-column="137" selection-end-line="153" selection-end-column="137" />
+        <state relative-caret-position="402">
+          <caret line="31" column="50" selection-start-line="31" selection-start-column="28" selection-end-line="31" selection-end-column="50" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1170,18 +1188,23 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ftpextras/src/main/java/DTLSOverDatagram.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-589">
-          <caret line="51" column="71" selection-start-line="51" selection-start-column="71" selection-end-line="51" selection-end-column="71" />
+        <state relative-caret-position="179">
+          <caret line="110" column="13" selection-start-line="110" selection-start-column="13" selection-end-line="110" selection-end-column="13" />
           <folding>
+            <element signature="e#0#26279#0" expanded="true" />
             <element signature="imports" expanded="true" />
+            <element signature="e#22971#22972#0" expanded="true" />
+            <element signature="e#22998#22999#0" expanded="true" />
+            <element signature="e#28427#28428#0" expanded="true" />
+            <element signature="e#28484#28485#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/ftpserver/src/main/java/com/gavineverett/server/DTLSServer.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="94">
-          <caret line="118" column="31" lean-forward="true" selection-start-line="118" selection-start-column="31" selection-end-line="118" selection-end-column="31" />
+        <state relative-caret-position="14">
+          <caret line="73" lean-forward="true" selection-start-line="73" selection-end-line="73" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1190,8 +1213,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/ftpclient/src/main/java/com/gavineverett/ftpclient/DTLSClient.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="146">
-          <caret line="227" column="22" lean-forward="true" selection-start-line="227" selection-start-column="22" selection-end-line="227" selection-end-column="22" />
+        <state relative-caret-position="197">
+          <caret line="182" column="75" selection-start-line="182" selection-start-column="75" selection-end-line="182" selection-end-column="75" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1238,7 +1261,7 @@
       </state>
       <state key="JdkListConfigurable.UI">
         <settings>
-          <last-edited>1.8</last-edited>
+          <last-edited>12</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>
@@ -1250,7 +1273,7 @@
       </state>
       <state key="ModuleStructureConfigurable.UI">
         <settings>
-          <last-edited>ftpclient</last-edited>
+          <last-edited>ftpextras</last-edited>
           <splitter-proportions>
             <option name="proportions">
               <list>

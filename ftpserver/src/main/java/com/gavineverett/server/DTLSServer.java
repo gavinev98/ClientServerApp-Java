@@ -63,7 +63,7 @@ public class DTLSServer {
         TrustManagerFactory tmf = TrustManagerFactory.getInstance("SunX509");
         tmf.init(ts);
 
-        SSLContext sslCtx = SSLContext.getInstance("DTLSv1.0", "SunJSSE");
+        SSLContext sslCtx = SSLContext.getInstance("DTLSv1.2", "SunJSSE");
 
         sslCtx.init(kmf.getKeyManagers(), tmf.getTrustManagers(), new java.security.SecureRandom());
 
