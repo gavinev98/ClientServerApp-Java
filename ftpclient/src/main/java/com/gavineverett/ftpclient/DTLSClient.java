@@ -16,13 +16,14 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
-import java.awt.FlowLayout;
 import java.security.KeyStore;
+import java.security.SecureRandom;
 
 
-public class GUI extends JFrame implements ActionListener {
+public class DTLSClient extends JFrame implements ActionListener {
 
-    final static String keyStoreFile = "public.jks"; // The FileName
+    final static String trustStoreFile = "public.jks"; // The trust FileName
+    final static String keyStoreFile = "herong.jks";
     final static String passwd = "gavin1234"; // The Password
 
     final static int theServerPort = 8888;
@@ -64,11 +65,11 @@ public class GUI extends JFrame implements ActionListener {
     static String downloadOption = "";
 
 
-    GUI() {
+    DTLSClient() {
         JFrame.setDefaultLookAndFeelDecorated(true);
         frame = new JFrame("Login");
         frame.setSize(500, 200);
-        frame.getContentPane().setBackground(Color.lightGray);
+        frame.getContentPane().setBackground(Color.pink);
         frame.setLocation(300, 200);
         frame.setLayout(null);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -115,7 +116,8 @@ public class GUI extends JFrame implements ActionListener {
         frame2.setLocationRelativeTo(null);
         txtArea = new JTextArea("\n Welcome to the server! " + username, 5, 5);
         txtArea.setBounds(20,130,450,250);
-        txtArea.setForeground(Color.RED);
+        txtArea.setForeground(Color.CYAN);
+        txtArea.setBackground(Color.BLACK);
         logout = new JButton("Logout");
         logout.setBounds(5,20,100,100);
         logout.addActionListener(this);
@@ -162,11 +164,17 @@ public class GUI extends JFrame implements ActionListener {
     //connection handshake for DTLS.
     void doClientSide() throws Exception {
         try {
+
             KeyStore ks = KeyStore.getInstance("JKS");
+            KeyStore ts = KeyStore.getInstance("JKS");
 
 
             //convert password to char array.
             char[] passphrase = passwd.toCharArray();
+
+            try (FileInputStream fis = new FileInputStream(trustStoreFile)) {
+                ts.load(fis, passphrase);
+            }
 
             try (FileInputStream fis = new FileInputStream(keyStoreFile)) {
                 ks.load(fis, passphrase);
@@ -176,17 +184,18 @@ public class GUI extends JFrame implements ActionListener {
             kmf.init(ks, passphrase);
 
             TrustManagerFactory tmf = TrustManagerFactory.getInstance("SunX509");
-            tmf.init(ks);
+            tmf.init(ts);
 
-            SSLContext sslCtx = SSLContext.getInstance("DTLS");
+            SSLContext sslCtx = SSLContext.getInstance("DTLSv1.0", "SunJSSE");
 
-            sslCtx.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);
+            sslCtx.init(kmf.getKeyManagers(), tmf.getTrustManagers(), new java.security.SecureRandom());
 
             SSLEngine engine = sslCtx.createSSLEngine("localhost", theServerPort);
             engine.setUseClientMode(true);
 
             //begin handshake when client connects to server
             engine.beginHandshake();
+
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -220,6 +229,22 @@ public class GUI extends JFrame implements ActionListener {
 
             case "202":
                 txtArea.setText("Welcome back: " + username);
+                //display files that they have downloaded/uploaded
+                File folder = new File("C:\\ServerSession\\" + username);
+                //store files in an array.
+                File[] listOfFiles = folder.listFiles();
+                txtArea.append("\nFiles you  have downloaded: ");
+                //loop over files in directory
+                for (int i = 1; i < listOfFiles.length; i++) {
+                    if (listOfFiles[i].isFile()) {
+                        txtArea.append("\n" + listOfFiles[i].getName());
+                    }
+                    if(listOfFiles[i].length() == 0)
+                    {
+                        txtArea.append("No files currently downloaded");
+                    }
+                }
+
                 frame2.setVisible(true);
                 frame.setVisible(false);
                 //userSession = true;
@@ -356,16 +381,19 @@ public class GUI extends JFrame implements ActionListener {
         System.setProperty("javax.net.ssl.TrustStorePassword", passwd);
         //uncomment to check for debug
         System.setProperty("javax.net.debug", "all");
+
+        java.security.Security.setProperty("jdk.tls.disabledAlgorithms",
+                "SSL, RC4, MD5withRSA, DH keySize < 768, EC keySize < 224");
        // if (debug)
         //    System.setProperty("javax.net.debug", "all");
 
         // java -Djavax.net.ssl.trustStore=/tmp/trustFilename -Djavax.net.ssl.trustStorePassword=123456 SSLClientExample
         try {
-            new GUI().doClientSide();
+            new DTLSClient().doClientSide();
         } catch (Exception e) {
             e.printStackTrace();
         }
-        new GUI();
+        new DTLSClient();
 
 
 

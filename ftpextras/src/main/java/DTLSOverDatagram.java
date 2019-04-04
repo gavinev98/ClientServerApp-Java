@@ -42,18 +42,14 @@ public class DTLSOverDatagram {
     /*
      * The following is to set up the keystores.
      */
-    private static String pathToKey = "C:\\Users\\Gavin Everett\\Documents\\ClientServerApp-Java\\ftpserver\\src\\main\\java\\com\\gavineverett\\server\\SecureLineInformation";
-    private static String pathToTrust = "C:\\Users\\Gavin Everett\\Documents\\ClientServerApp-Java\\ftpserver\\src\\main\\java\\com\\gavineverett\\server\\SecureLineInformation";
     private static String keyStoreFile = "herong.jks";
     private static String trustStoreFile = "public.jks";
     private static String passwd = "gavin1234";
 
     private static String keyFilename =
-            System.getProperty("test.src", ".") + "/" + pathToKey +
-                    "/" + keyStoreFile;
+            System.getProperty("test.src", ".") + "/" + keyStoreFile;
     private static String trustFilename =
-            System.getProperty("test.src", ".") + "/" + pathToTrust +
-                    "/" + trustStoreFile;
+            System.getProperty("test.src", ".") + "/" + trustStoreFile;
     private static Exception clientException = null;
     private static Exception serverException = null;
 

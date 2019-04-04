@@ -1,11 +1,11 @@
 package com.gavineverett.server;
 
-/* SslSocketServer.java
+/* DTLSServer.java
  - Copyright (c) 2014, HerongYang.com, All Rights Reserved.
  */
  /*
  Since my SSL socket server does not require client authentication, we can create a SSL socket client with the default SSL socket factory. Here is my sample program,
- SslSocketServer.java, which can be used to communicate with SslReverseEchoer.java:
+ DTLSServer.java, which can be used to communicate with SslReverseEchoer.java:
  */
 
 import java.io.*;
@@ -15,7 +15,7 @@ import java.security.KeyStore;
 import java.util.Scanner;
 import javax.net.ssl.*;
 
-public class SslSocketServer {
+public class DTLSServer {
 
     //defining codes
     public static final String login = "200";
@@ -26,8 +26,8 @@ public class SslSocketServer {
     private static boolean isCreated = false;
 
 
-    final static String keyStoreFile = "herong.jks"; // The FileName
-    final static String trustFile = "public.jks"; // The FileName
+    final static String trustStoreFile = "public.jks"; // The trust FileName
+    final static String keyStoreFile = "herong.jks";
     final static String passwd = "gavin1234"; // The Password
 
     /*
@@ -43,9 +43,15 @@ public class SslSocketServer {
     void doServerSide() throws Exception {
 
         KeyStore ks = KeyStore.getInstance("JKS");
+        KeyStore ts = KeyStore.getInstance("JKS");
 
 
+        //convert password to char array.
         char[] passphrase = passwd.toCharArray();
+
+        try (FileInputStream fis = new FileInputStream(trustStoreFile)) {
+            ts.load(fis, passphrase);
+        }
 
         try (FileInputStream fis = new FileInputStream(keyStoreFile)) {
             ks.load(fis, passphrase);
@@ -55,14 +61,15 @@ public class SslSocketServer {
         kmf.init(ks, passphrase);
 
         TrustManagerFactory tmf = TrustManagerFactory.getInstance("SunX509");
-        tmf.init(ks);
+        tmf.init(ts);
 
-        SSLContext sslCtx = SSLContext.getInstance("DTLS");
+        SSLContext sslCtx = SSLContext.getInstance("DTLSv1.0", "SunJSSE");
 
-        sslCtx.init(kmf.getKeyManagers(), tmf.getTrustManagers(), null);
+        sslCtx.init(kmf.getKeyManagers(), tmf.getTrustManagers(), new java.security.SecureRandom());
 
         SSLEngine engine = sslCtx.createSSLEngine("localhost", theServerPort);
         engine.setUseClientMode(false);
+
 
 
 
@@ -74,6 +81,7 @@ public class SslSocketServer {
 
 
             System.out.println("Client-Server Application ready! Secured by DTLS.");
+
             while (true) {  // forever loop
 
                 // SSLSocket sslSocket = (SSLSocket) sslServerSocket.accept();
@@ -83,7 +91,7 @@ public class SslSocketServer {
                         mySocket.receiveMessageAndSender();
 
                 String message = request.getMessage();
-
+                System.out.println(engine.getHandshakeStatus());
 
                 System.out.println("Request Received!");
                 System.out.println(engine.getSession());
@@ -314,12 +322,16 @@ public class SslSocketServer {
 
         System.setProperty("javax.net.ssl.keyStore", keyStoreFile);
         System.setProperty("javax.net.ssl.keyStorePassword", passwd);
+
+        java.security.Security.setProperty("jdk.tls.disabledAlgorithms",
+                "SSL, RC4, MD5withRSA, DH keySize < 768, EC keySize < 224");
+
        // if (debug)
            // System.setProperty("javax.net.debug", "all");
 
         // java -Djavax.net.ssl.keyStore=/tmp/trustFilename
         // -Djavax.net.ssl.keyStorePassword=123456 SSLServerExample
-        new SslSocketServer().doServerSide();
+        new DTLSServer().doServerSide();
 
     }
 
