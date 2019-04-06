@@ -27,7 +27,7 @@ public class DTLSServer {
 
 
     final static String trustStoreFile = "public.jks"; // The trust FileName
-    final static String keyStoreFile = "herong.jks";
+    final static String keyStoreFile = "herong.jks"; // The keystore
     final static String passwd = "gavin1234"; // The Password
 
     /*
@@ -216,7 +216,7 @@ public class DTLSServer {
                 writePass.println(storeUserpass);
                 writePass.close();
                 //output sucessfully registered message.
-                String registered = "204:" + "You have been successfully registered: " + username + " enjoy!";
+                String registered = "207:" + "You have been successfully registered: " + username + " enjoy!";
                 createTempFileForDownload();
                 //return string registered if user has successfully been registered.
                 return registered;

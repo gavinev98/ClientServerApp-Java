@@ -103,7 +103,7 @@ public class DTLSClient extends JFrame implements ActionListener {
         field1.setToolTipText("Enter a password");
         frame.add(field1);
 
-        jbutton = new JButton("Log in");
+        jbutton = new JButton("Log in/Register");
         jbutton.setSize(jbutton.getPreferredSize());
         jbutton.setLocation(150, 80);
         frame.add(jbutton);
@@ -310,7 +310,7 @@ public class DTLSClient extends JFrame implements ActionListener {
                     for (int i = 0; i < listOfFiles.length; i++) {
                         //ask user for the name of a file they wish to download , show a list of files in the temporary directory.
                         txtArea.append("-----\nHere is a list of files:---" + "\n" + listOfFiles[i].getName());
-                        String downloadoption = JOptionPane.showInputDialog("Please enter the name of a file that you wish to download");
+                        String downloadoption = JOptionPane.showInputDialog("Please enter the name of a file that you wish to download(Try , Download.txt");
 
                         String fileChosen = downloadoption;
 
