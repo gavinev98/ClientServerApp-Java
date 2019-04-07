@@ -147,18 +147,20 @@ public class EchoClientHelper1 {
                 int returnVal = fc.showOpenDialog(frame);
                 if (returnVal == JFileChooser.APPROVE_OPTION) {
                     file = fc.getSelectedFile();
-                    //check the the file size.
-                    long file_size = file.length();
+                    //check the the file size in bytes
+                    long file_size_bytes = file.length();
+                    //check file size in kilobytes
+                    long fileSizeInKB = file_size_bytes / 1024;
                     //check if file size is greater than 64kbs.
-                    if (file_size > MAX_PACKET_SIZE) {
-                        JOptionPane.showMessageDialog(null," 308 - The file selected exceeds 64kbs! Please select another file.","Error", JOptionPane.ERROR_MESSAGE);
+                    if (fileSizeInKB > MAX_PACKET_SIZE) {
+                       JOptionPane.showMessageDialog(null," 308 - The file selected exceeds 64kbs! Please select another file.","Error", JOptionPane.ERROR_MESSAGE);
                     } else {
                         //This is where a real application would open the file.
                         System.out.println("File to be uploaded : " + file.getName() + ".");
                         frame.dispose();
                         return file;
-
                     }
+
                 }
                 // choose cancel option to close out of dialog.
                 if (returnVal == JFileChooser.CANCEL_OPTION) {

@@ -12,6 +12,7 @@ import java.io.*;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.security.KeyStore;
+import java.util.Base64;
 import java.util.Scanner;
 import javax.net.ssl.*;
 
@@ -256,12 +257,18 @@ public class DTLSServer {
         if(!crreate.exists())
             crreate.createNewFile();
 
+        //Decode the byte array incase of an image.
+        String stringRepresentation = Base64.getEncoder().encodeToString(file);
+        byte[] decodedBytes = Base64.getDecoder().decode(stringRepresentation);
+
+
         //check if file exists before writing byte array to the file.
         if(crreate.exists() && userDirectory.exists()) {
             //convert the byte array retrieved to a file and upload to server folder.
             try (FileOutputStream fos = new FileOutputStream(crreate)) {
                 //write file to directory.
-                fos.write(file);
+                fos.write(decodedBytes);
+                fos.close();
                 System.out.println("Success wrote to file");
             }
         }
