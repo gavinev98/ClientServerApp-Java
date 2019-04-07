@@ -7,7 +7,7 @@ import java.net.InetAddress;
 import java.net.SocketException;
 
 public class MyServerDatagramSocket extends DatagramSocket {
-    static final int MAX_LEN = 100;
+    static final int MAX_LEN = 64000;
     MyServerDatagramSocket(int portNo) throws SocketException {
         super(portNo);
     }

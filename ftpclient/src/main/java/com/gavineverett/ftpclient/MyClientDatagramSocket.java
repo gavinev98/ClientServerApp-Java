@@ -9,7 +9,7 @@ import java.net.InetAddress;
 import java.net.SocketException;
 
 public class MyClientDatagramSocket extends DatagramSocket {
-    static final int MAX_LEN = 100;
+    static final int MAX_LEN = 64000;
     MyClientDatagramSocket( ) throws SocketException{
         super( );
     }
